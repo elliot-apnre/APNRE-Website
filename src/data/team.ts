@@ -71,6 +71,6 @@ export const TEAM: TeamMember[] = [
     initials: 'PN',
     photo: patrickPhoto,
     group: 'leadership',
-    bio: 'Patrick founded APN and leads the business’s sales team, with oversight across the property management side of the business.',
+    bio: 'Patrick founded the business — originally Adelaide Property Network, now APN Real Estate — and leads its sales team today. Property management sits alongside that sales work rather than apart from it, so Patrick has direct oversight of how the two sides operate together, and a day-to-day view of the Adelaide and Mount Gambier markets that informs decisions made on the property management side for owners.',
   },
 ];

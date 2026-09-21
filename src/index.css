@@ -446,12 +446,20 @@ input, select, textarea {
 }
 
 .problem__card {
-  padding: 30px 26px 30px 0;
+  padding: 30px 28px 30px 0;
   border-right: 1px solid var(--line-light);
 }
 
 .problem__card:last-child {
   border-right: none;
+}
+
+.problem__card:not(:first-child) {
+  /* Cards had padding-right but no padding-left, so the 2nd/3rd
+     column's text sat flush against the divider it shares with the
+     previous column. Give every column breathing room on both sides
+     of a line, not just one. */
+  padding-left: 28px;
 }
 
 .problem__tag {
@@ -483,6 +491,7 @@ input, select, textarea {
     border-right: none !important;
     border-bottom: 1px solid var(--line-light);
     padding-right: 0;
+    padding-left: 0;
   }
   .problem__card:last-child {
     border-bottom: none;
@@ -651,17 +660,19 @@ input, select, textarea {
 
 .team__leader {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   align-items: center;
-  max-width: 640px;
-  padding: clamp(18px, 2.4vw, 28px);
+  max-width: 820px;
+  padding: clamp(24px, 3vw, 36px);
   border: 1px solid var(--line-light);
   border-radius: var(--radius-md);
   background: var(--white);
 }
 
 .team__leader-portrait {
-  width: clamp(88px, 16vw, 140px);
+  /* Sized to match the property-management portraits' scale rather
+     than reading as a small thumbnail next to a block of text. */
+  width: clamp(120px, 20vw, 260px);
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
   overflow: hidden;
@@ -678,9 +689,15 @@ input, select, textarea {
   margin-top: 8px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .team__leader {
-    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .team__leader-portrait {
+    width: clamp(120px, 34vw, 180px);
   }
 }
 
@@ -816,6 +833,14 @@ input, select, textarea {
 /* ============================================================
    Appraisal form
    ============================================================ */
+
+.appraisal {
+  /* Both this section and FAQ share the paper background, so the two
+     full .section paddings stacked together (up to ~208px combined)
+     read as one oversized, unexplained gap rather than a transition
+     between sections. Tighten just this shared edge. */
+  padding-bottom: clamp(32px, 4vw, 56px);
+}
 
 .appraisal__grid {
   display: grid;
@@ -1060,6 +1085,10 @@ input, select, textarea {
 /* ============================================================
    FAQ
    ============================================================ */
+
+.faq {
+  padding-top: clamp(32px, 4vw, 56px);
+}
 
 .faq__head {
   max-width: 620px;
