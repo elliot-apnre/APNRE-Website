@@ -39,10 +39,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     payload[field] = String(formData.get(field) ?? '').trim();
   }
 
-  // Honeypot: a hidden field named "company" in the form should always be
-  // empty for a real visitor. If it's filled, silently pretend success —
-  // don't tip off the bot, don't waste a row in the sheet.
-  const honeypot = String(formData.get('company') ?? '').trim();
+  // Honeypot: a hidden field that should always be empty for a real
+  // visitor. If it's filled, silently pretend success — don't tip off
+  // the bot, don't waste a row in the sheet.
+  const honeypot = String(formData.get('hp_confirm') ?? '').trim();
   if (honeypot) {
     return json({ ok: true });
   }
@@ -69,6 +69,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     if (!sheetRes.ok) {
       throw new Error(`Sheet webhook responded ${sheetRes.status}`);
+    }
+
+    // Apps Script web apps can return HTTP 200 with an error page/body
+    // (e.g. an uncaught exception inside doPost — a renamed sheet tab,
+    // a stale deployed version) rather than a proper non-2xx status. A
+    // status-only check would treat that as success and tell the
+    // browser the lead was recorded when nothing was actually written.
+    // Require the expected { ok: true } body instead of trusting status
+    // alone.
+    const sheetBody = await sheetRes.json().catch(() => null);
+    if (!sheetBody || sheetBody.ok !== true) {
+      throw new Error(`Sheet webhook did not confirm success: ${JSON.stringify(sheetBody)}`);
     }
   } catch (err) {
     console.error('Failed to forward lead to sheet webhook:', err);

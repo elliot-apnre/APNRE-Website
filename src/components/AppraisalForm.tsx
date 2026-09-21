@@ -127,11 +127,16 @@ export default function AppraisalForm() {
             <form className="appraisal__form" onSubmit={handleSubmit} noValidate>
               {/* Honeypot — hidden from real visitors via CSS, invisible to
                   screen readers. Bots that fill every field trip this and
-                  functions/api/lead.ts silently drops the submission. */}
+                  functions/api/lead.ts silently drops the submission.
+                  Deliberately NOT named/labelled like a real field (e.g.
+                  "company", "website") — browser autofill ignores CSS
+                  visual-hiding and will happily fill a hidden field if its
+                  name/label matches a saved profile value, which silently
+                  drops real submissions exactly like a bot would. */}
               <div className="appraisal__honeypot" aria-hidden="true">
                 <label>
-                  Company
-                  <input type="text" name="company" tabIndex={-1} autoComplete="off" />
+                  Leave this field blank
+                  <input type="text" name="hp_confirm" tabIndex={-1} autoComplete="off" />
                 </label>
               </div>
 
