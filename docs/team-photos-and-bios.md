@@ -2,10 +2,14 @@
 
 ## Photos
 
-All five photo boxes (the team is now one grid, no separate leadership
-tier) are already a fixed, identical size (`.team__portrait` is a 3:4 box
-with `object-fit: cover` in `src/index.css`) — so the *boxes* are
-consistent. What's inconsistent is the source photos themselves:
+The team is now split into two groups: **Property Management** (Jenny,
+Luke, Marissa, Brett — a four-up grid, `.team__grid`) and **Leadership /
+Sales** (Patrick — a wider single "spotlight" card, `.team__leader`, since
+one person alone in a grid tile reads as an accident rather than a
+deliberate layout). The four property-management photo boxes are a fixed,
+identical size (`.team__portrait` is a 3:4 box with `object-fit: cover` in
+`src/index.css`), so the *boxes* are consistent. What's inconsistent is the
+source photos themselves:
 
 - Jenny and Luke are shot at a similar distance/style (head-and-shoulders,
   office-window bokeh background).
@@ -27,14 +31,15 @@ Two ways to fix this, in order of how much it actually solves it:
 
 ## Bios
 
-`src/data/team.ts` now has a `bio` field on every one of the five team
-members, rendered the same way for everyone (a short paragraph under name
-and role). Every value is currently a `PLACEHOLDER —` string — the site
-will visibly show that placeholder text until it's replaced, on purpose,
-so it can't accidentally ship silently blank or with lorem ipsum.
+`src/data/team.ts` has a `bio` field on every team member. Each one is
+currently a short, factual, role-based line (what they manage, what the
+role covers) rather than a personal biography — nothing invented about
+experience, background or personal detail. That's a deliberate stand-in,
+not a placeholder: it's true and fine to ship as-is, but it reads as a
+job description rather than a person, which is worth improving.
 
-To fill these in, the fastest path is a short async brief to each person —
-something like:
+To make these read more like actual people, the fastest path is a short
+async brief to each person — something like:
 
 > For the new website, we're adding a two-to-three sentence intro under
 > your photo. Could you send me:

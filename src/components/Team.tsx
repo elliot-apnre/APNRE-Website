@@ -1,5 +1,15 @@
 import { TEAM, type TeamMember } from '../data/team';
 
+function ContactLines({ member }: { member: TeamMember }) {
+  if (!member.phone && !member.email) return null;
+  return (
+    <p className="team__contact">
+      {member.phone && <a href={`tel:${member.phone.replace(/\s+/g, '')}`}>{member.phone}</a>}
+      {member.email && <a href={`mailto:${member.email}`}>{member.email}</a>}
+    </p>
+  );
+}
+
 function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div className="team__card">
@@ -13,12 +23,27 @@ function TeamCard({ member }: { member: TeamMember }) {
       <h3 className="h-3">{member.name}</h3>
       <p className="team__role">{member.role}</p>
       <p className="team__bio">{member.bio}</p>
-      {(member.phone || member.email) && (
-        <p className="team__contact">
-          {member.phone && <a href={`tel:${member.phone.replace(/\s+/g, '')}`}>{member.phone}</a>}
-          {member.email && <a href={`mailto:${member.email}`}>{member.email}</a>}
-        </p>
-      )}
+      <ContactLines member={member} />
+    </div>
+  );
+}
+
+function TeamLeader({ member }: { member: TeamMember }) {
+  return (
+    <div className="team__leader">
+      <div className="team__leader-portrait">
+        <img
+          src={member.photo}
+          alt={member.name}
+          style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
+        />
+      </div>
+      <div className="team__leader-body">
+        <h3 className="h-3">{member.name}</h3>
+        <p className="team__role">{member.role}</p>
+        <p className="team__bio">{member.bio}</p>
+        <ContactLines member={member} />
+      </div>
     </div>
   );
 }
@@ -49,11 +74,9 @@ export default function Team() {
 
         <div className="team__group">
           <h3 className="team__group-label">Leadership / Sales</h3>
-          <div className="team__grid">
-            {leadership.map((member) => (
-              <TeamCard member={member} key={member.name} />
-            ))}
-          </div>
+          {leadership.map((member) => (
+            <TeamLeader member={member} key={member.name} />
+          ))}
         </div>
 
         <div className="team__cta">

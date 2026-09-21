@@ -64,6 +64,11 @@ h1, h2, h3, h4 {
   line-height: 1.05;
   letter-spacing: -0.01em;
   font-weight: 700;
+  /* A single long word (e.g. "straightforward") can be wider than a
+     narrow phone column at these large sizes; browsers won't break
+     inside a word by default, so it silently overflows the viewport
+     instead of wrapping. Let it break as a last resort. */
+  overflow-wrap: break-word;
 }
 
 p {
@@ -524,20 +529,39 @@ input, select, textarea {
   padding-bottom: 0;
 }
 
+.why__reason-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.why__reason-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--lime);
+  flex-shrink: 0;
+}
+
 .why__reason-tag {
-  display: block;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--lime);
-  margin-bottom: 8px;
+  color: rgba(246, 244, 238, 0.55);
 }
 
-.why__list h3 {
+.why__reason-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.9vw, 1.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--paper);
-  margin-bottom: 8px;
+  max-width: 26ch;
+  margin: 0 0 8px;
 }
 
 .why__founder {
@@ -611,13 +635,53 @@ input, select, textarea {
 
 .team__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 3vw, 32px) clamp(24px, 4vw, 48px);
-  max-width: 980px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3vw, 32px) clamp(24px, 4vw, 40px);
+}
+
+@media (min-width: 860px) {
+  .team__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .team__card {
   text-align: left;
+}
+
+.team__leader {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  max-width: 640px;
+  padding: clamp(18px, 2.4vw, 28px);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.team__leader-portrait {
+  width: clamp(88px, 16vw, 140px);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.team__leader-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team__leader-body .team__bio {
+  margin-top: 8px;
+}
+
+@media (max-width: 420px) {
+  .team__leader {
+    gap: 16px;
+  }
 }
 
 .team__contact {
@@ -640,11 +704,11 @@ input, select, textarea {
 }
 
 .team__portrait {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   background: var(--charcoal-900);
   overflow: hidden;
   margin-bottom: 16px;
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
 }
 
 .team__portrait img {
@@ -673,13 +737,6 @@ input, select, textarea {
 .team__cta {
   border-top: 1px solid var(--line-light);
   padding-top: 28px;
-}
-
-@media (max-width: 560px) {
-  .team__grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: none;
-  }
 }
 
 /* ============================================================
@@ -1076,12 +1133,23 @@ input, select, textarea {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Not align-items: center — that sizes block children (like the
+     headline) to their intrinsic max-content width instead of the
+     container's, which can make a long word/line overflow the
+     viewport on narrow screens instead of wrapping. Stretching the
+     children full-width (they still center their own text/content)
+     gives them a definite width to actually wrap within. */
+  align-items: stretch;
 }
 
 .final-cta__headline {
   color: var(--paper);
   margin-bottom: 20px;
+  /* Smaller ceiling than the shared .h-display scale: at 4.6rem,
+     "straightforward?" doesn't fit this section's 780px column even
+     on its own line, forcing an ugly mid-word break. This still reads
+     as a large, bold, uppercase headline — just tuned to this copy. */
+  font-size: clamp(1.7rem, 5vw, 3.3rem);
 }
 
 .final-cta__inner .lede {

@@ -12,8 +12,10 @@ export interface TeamMember {
   initials: string;
   photo: string;
   group: TeamGroup;
-  /** Short intro copy. Placeholder text below — replace with real bios
-   *  before launch (see docs/team-photos-and-bios.md). */
+  /** Concise, factual, role-based copy — no invented biographical detail
+   *  (years of experience, personal history, etc). Replace with a real
+   *  first-person bio if/when APN supplies one; see
+   *  docs/team-photos-and-bios.md. */
   bio: string;
   /** Direct phone/email — only set once verified with APN. Never invent
    *  these; a landlord seeing a wrong number is worse than seeing none. */
@@ -25,11 +27,6 @@ export interface TeamMember {
   focalPoint?: string;
 }
 
-// TODO (content): every bio below is a placeholder — swap for 2-3 real
-// sentences per person (background, how long at APN, an area of focus).
-// See docs/team-photos-and-bios.md for the brief + a template to send to
-// each person. Phone/email are left unset until APN confirms them —
-// do not fill these in with guessed values.
 export const TEAM: TeamMember[] = [
   {
     name: 'Jenny Saffin',
@@ -37,7 +34,7 @@ export const TEAM: TeamMember[] = [
     initials: 'JS',
     photo: jennyPhoto,
     group: 'property-management',
-    bio: 'PLACEHOLDER — 2–3 sentences on Jenny’s background, focus area, and what landlords can expect working with her.',
+    bio: 'Jenny manages a portfolio of rental properties for APN landlords — inspections, maintenance and day-to-day tenant communication.',
   },
   {
     name: 'Luke Whittaker',
@@ -45,7 +42,7 @@ export const TEAM: TeamMember[] = [
     initials: 'LW',
     photo: lukePhoto,
     group: 'property-management',
-    bio: 'PLACEHOLDER — 2–3 sentences on Luke’s background, focus area, and what landlords can expect working with him.',
+    bio: 'Luke manages a portfolio of rental properties for APN landlords, keeping tenancies running smoothly and owners informed.',
   },
   {
     name: 'Marissa Bowell',
@@ -58,7 +55,7 @@ export const TEAM: TeamMember[] = [
     // shoulders-up headshot until it can be reshot. Tune or remove once a
     // consistent photo is in.
     focalPoint: 'center 15%',
-    bio: 'PLACEHOLDER — 2–3 sentences on Marissa’s background, focus area, and what landlords can expect working with her.',
+    bio: 'Marissa manages a portfolio of rental properties for APN landlords, from routine inspections through to maintenance requests.',
   },
   {
     name: 'Brett David',
@@ -66,7 +63,7 @@ export const TEAM: TeamMember[] = [
     initials: 'BD',
     photo: brettPhoto,
     group: 'property-management',
-    bio: 'PLACEHOLDER — 2–3 sentences on Brett’s background, focus area, and what landlords can expect working with him.',
+    bio: 'Brett manages a portfolio of rental properties for APN landlords and looks after the accounts side of property management, including rent disbursements to owners.',
   },
   {
     name: 'Patrick Nhim',
@@ -74,6 +71,6 @@ export const TEAM: TeamMember[] = [
     initials: 'PN',
     photo: patrickPhoto,
     group: 'leadership',
-    bio: 'PLACEHOLDER — 2–3 sentences on Patrick founding APN, his sales-side background, and what he oversees today.',
+    bio: 'Patrick founded APN and leads the business’s sales team, with oversight across the property management side of the business.',
   },
 ];

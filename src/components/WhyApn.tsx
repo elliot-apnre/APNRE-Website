@@ -2,16 +2,19 @@ import agentPhoto from '../assets/photos/agent-placing-sold-sticker.jpg';
 
 const REASONS = [
   {
+    num: '01',
     tag: 'Local knowledge',
-    title: 'Local people. Local property knowledge.',
+    title: 'People on the ground. Local property knowledge.',
     copy: 'APN operates across Adelaide and Mount Gambier, with people on the ground in both markets.',
   },
   {
-    tag: 'A named property manager',
+    num: '02',
+    tag: 'Direct access',
     title: 'Know exactly who’s looking after it.',
     copy: 'You’ll know who is responsible for your property and how to reach them directly.',
   },
   {
+    num: '03',
     tag: 'Owner-first thinking',
     title: 'You own the property. You make the decisions.',
     copy: 'Our job is to manage the property professionally, keep you informed and give you the information you need to make your own decisions.',
@@ -28,9 +31,12 @@ export default function WhyApn() {
 
           <ul className="why__list">
             {REASONS.map((r) => (
-              <li key={r.tag}>
-                <span className="why__reason-tag">{r.tag}</span>
-                <h3 className="h-3">{r.title}</h3>
+              <li key={r.num}>
+                <div className="why__reason-head">
+                  <span className="why__reason-num">{r.num}</span>
+                  <span className="why__reason-tag">{r.tag}</span>
+                </div>
+                <h3 className="why__reason-title">{r.title}</h3>
                 <p className="body-copy">{r.copy}</p>
               </li>
             ))}

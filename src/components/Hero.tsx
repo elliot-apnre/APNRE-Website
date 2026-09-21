@@ -10,17 +10,17 @@ export default function Hero() {
 
       <div className="wrap hero__content">
         <h1 className="h-display hero__headline">
-          Your property.
+          Your property
           <br />
-          Your investment.
+          is an asset.
           <br />
-          <span className="hero__headline-accent">Your person.</span>
+          <span className="hero__headline-accent">We treat it like one.</span>
         </h1>
 
         <p className="lede hero__lede">
           Professional property management for landlords across Adelaide and
-          Mount Gambier — with a named property manager you can actually
-          reach.
+          Mount Gambier — with a team that treats your property as an
+          investment, not just another rental to manage.
         </p>
 
         <div className="hero__actions">
