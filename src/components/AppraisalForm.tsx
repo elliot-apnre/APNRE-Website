@@ -1,10 +1,11 @@
 import { useState, type FormEvent } from 'react';
+import { trackAppraisalLead } from '../lib/analytics';
 
-// Integration point: set this to a real endpoint (your CRM, a serverless
-// function, Formspree, a Zapier webhook, etc.) before launch. While this
-// is empty, the form makes that explicit in the UI instead of pretending
-// a submission was received.
-const FORM_ENDPOINT = '';
+// Posts to the Cloudflare Pages Function at functions/api/lead.ts, which
+// forwards the submission server-side to a Google Sheet (see
+// docs/google-sheet-lead-webhook.md for setup). Same-origin, so no CORS
+// configuration needed. Swap this if the intake mechanism ever changes.
+const FORM_ENDPOINT = '/api/lead';
 
 type Status = 'idle' | 'submitting' | 'sent' | 'error' | 'not-connected';
 
@@ -26,6 +27,7 @@ export default function AppraisalForm() {
       const formData = new FormData(e.currentTarget);
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: formData });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      trackAppraisalLead();
       setStatus('sent');
     } catch (err) {
       console.error('Appraisal form submission failed:', err);
@@ -113,6 +115,16 @@ export default function AppraisalForm() {
 
           {showForm && (
             <form className="appraisal__form" onSubmit={handleSubmit} noValidate>
+              {/* Honeypot — hidden from real visitors via CSS, invisible to
+                  screen readers. Bots that fill every field trip this and
+                  functions/api/lead.ts silently drops the submission. */}
+              <div className="appraisal__honeypot" aria-hidden="true">
+                <label>
+                  Company
+                  <input type="text" name="company" tabIndex={-1} autoComplete="off" />
+                </label>
+              </div>
+
               <div className="appraisal__row">
                 <label>
                   Name*

@@ -9,18 +9,60 @@ export interface TeamMember {
   role: string;
   initials: string;
   photo: string;
+  /** Short intro copy. Placeholder text below — replace with real bios
+   *  before launch (see docs/team-photos-and-bios.md). */
+  bio: string;
+  /** CSS object-position for the portrait crop, e.g. 'center 20%'.
+   *  Use this to fix inconsistent framing between photos without needing
+   *  to re-crop the source image. Defaults to 'center' if omitted. */
+  focalPoint?: string;
 }
 
-// The three landlords will most likely deal with day-to-day.
-export const PROPERTY_MANAGERS: TeamMember[] = [
-  { name: 'Jenny Saffin', role: 'Property Manager', initials: 'JS', photo: jennyPhoto },
-  { name: 'Luke Whittaker', role: 'Property Manager / Sales Agent', initials: 'LW', photo: lukePhoto },
-  { name: 'Marissa Bowell', role: 'Property Manager', initials: 'MB', photo: marissaPhoto },
-];
-
-// Leadership — shown smaller, below the property managers, so the founder
-// story doesn't dominate this landlord-acquisition page.
-export const LEADERSHIP: TeamMember[] = [
-  { name: 'Brett David', role: 'Region Manager', initials: 'BD', photo: brettPhoto },
-  { name: 'Patrick Nhim', role: 'Director', initials: 'PN', photo: patrickPhoto },
+// Everyone shown the same way, one grid, no separate "leadership" tier.
+//
+// TODO (content): every bio below is a placeholder — swap for 2-3 real
+// sentences per person (background, how long at APN, an area of focus).
+// See docs/team-photos-and-bios.md for the brief + a template to send to
+// each person.
+export const TEAM: TeamMember[] = [
+  {
+    name: 'Jenny Saffin',
+    role: 'Property Manager',
+    initials: 'JS',
+    photo: jennyPhoto,
+    bio: 'PLACEHOLDER — 2–3 sentences on Jenny’s background, focus area, and what landlords can expect working with her.',
+  },
+  {
+    name: 'Luke Whittaker',
+    role: 'Property Manager / Sales Agent',
+    initials: 'LW',
+    photo: lukePhoto,
+    bio: 'PLACEHOLDER — 2–3 sentences on Luke’s background, focus area, and what landlords can expect working with him.',
+  },
+  {
+    name: 'Marissa Bowell',
+    role: 'Property Manager / Sales Agent',
+    initials: 'MB',
+    photo: marissaPhoto,
+    // This photo is framed noticeably tighter/closer than the others —
+    // nudge the crop down slightly so it reads more like a standard
+    // shoulders-up headshot until it can be reshot. Tune or remove once a
+    // consistent photo is in.
+    focalPoint: 'center 15%',
+    bio: 'PLACEHOLDER — 2–3 sentences on Marissa’s background, focus area, and what landlords can expect working with her.',
+  },
+  {
+    name: 'Brett David',
+    role: 'Property Manager / Accounting',
+    initials: 'BD',
+    photo: brettPhoto,
+    bio: 'PLACEHOLDER — 2–3 sentences on Brett’s background, focus area, and what landlords can expect working with him.',
+  },
+  {
+    name: 'Patrick Nhim',
+    role: 'Director',
+    initials: 'PN',
+    photo: patrickPhoto,
+    bio: 'PLACEHOLDER — 2–3 sentences on Patrick founding APN, his sales-side background, and what he oversees today.',
+  },
 ];
