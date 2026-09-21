@@ -15,13 +15,12 @@ export default function SwitchSection() {
           <br />a change?
         </h2>
         <p className="lede switch__lede">
-          Changing property managers is a normal, straightforward process —
-          it doesn’t need to disrupt your tenancy. Tell us about your
-          property and we’ll talk you through what’s involved, so you can
-          make your own decision about what’s right for it.
+          Changing property managers is a straightforward process. Tell us
+          about your property and we’ll explain what’s involved, including
+          how the transition works while your property is tenanted.
         </p>
         <a href="#appraisal" className="btn btn-primary">
-          I'm Thinking of Changing Property Managers
+          Talk to APN About Switching
         </a>
       </div>
     </section>

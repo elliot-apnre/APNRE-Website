@@ -4,46 +4,55 @@ import jennyPhoto from '../assets/team/jenny-saffin.jpg';
 import lukePhoto from '../assets/team/luke-whittaker.jpg';
 import marissaPhoto from '../assets/team/marissa-bowell.jpg';
 
+export type TeamGroup = 'property-management' | 'leadership';
+
 export interface TeamMember {
   name: string;
   role: string;
   initials: string;
   photo: string;
+  group: TeamGroup;
   /** Short intro copy. Placeholder text below — replace with real bios
    *  before launch (see docs/team-photos-and-bios.md). */
   bio: string;
+  /** Direct phone/email — only set once verified with APN. Never invent
+   *  these; a landlord seeing a wrong number is worse than seeing none. */
+  phone?: string;
+  email?: string;
   /** CSS object-position for the portrait crop, e.g. 'center 20%'.
    *  Use this to fix inconsistent framing between photos without needing
    *  to re-crop the source image. Defaults to 'center' if omitted. */
   focalPoint?: string;
 }
 
-// Everyone shown the same way, one grid, no separate "leadership" tier.
-//
 // TODO (content): every bio below is a placeholder — swap for 2-3 real
 // sentences per person (background, how long at APN, an area of focus).
 // See docs/team-photos-and-bios.md for the brief + a template to send to
-// each person.
+// each person. Phone/email are left unset until APN confirms them —
+// do not fill these in with guessed values.
 export const TEAM: TeamMember[] = [
   {
     name: 'Jenny Saffin',
     role: 'Property Manager',
     initials: 'JS',
     photo: jennyPhoto,
+    group: 'property-management',
     bio: 'PLACEHOLDER — 2–3 sentences on Jenny’s background, focus area, and what landlords can expect working with her.',
   },
   {
     name: 'Luke Whittaker',
-    role: 'Property Manager / Sales Agent',
+    role: 'Property Manager',
     initials: 'LW',
     photo: lukePhoto,
+    group: 'property-management',
     bio: 'PLACEHOLDER — 2–3 sentences on Luke’s background, focus area, and what landlords can expect working with him.',
   },
   {
     name: 'Marissa Bowell',
-    role: 'Property Manager / Sales Agent',
+    role: 'Property Manager',
     initials: 'MB',
     photo: marissaPhoto,
+    group: 'property-management',
     // This photo is framed noticeably tighter/closer than the others —
     // nudge the crop down slightly so it reads more like a standard
     // shoulders-up headshot until it can be reshot. Tune or remove once a
@@ -53,9 +62,10 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Brett David',
-    role: 'Property Manager / Accounting',
+    role: 'Property Manager / Accounts',
     initials: 'BD',
     photo: brettPhoto,
+    group: 'property-management',
     bio: 'PLACEHOLDER — 2–3 sentences on Brett’s background, focus area, and what landlords can expect working with him.',
   },
   {
@@ -63,6 +73,7 @@ export const TEAM: TeamMember[] = [
     role: 'Director',
     initials: 'PN',
     photo: patrickPhoto,
+    group: 'leadership',
     bio: 'PLACEHOLDER — 2–3 sentences on Patrick founding APN, his sales-side background, and what he oversees today.',
   },
 ];

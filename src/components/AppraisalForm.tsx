@@ -44,26 +44,36 @@ export default function AppraisalForm() {
           <span className="eyebrow">Free rental appraisal</span>
           <h2 className="h-1">What is your property really worth to rent?</h2>
           <p className="lede">
-            Tell us a little about your property and one of our property
-            managers will get back to you with an honest, no-obligation
-            rental appraisal. Already have a property manager? Mention it
-            in the note below — this is the same form we use for that
-            conversation too.
+            Tell us about your property. A local APN property manager will
+            review the details and contact you directly.
           </p>
 
-          <dl className="appraisal__facts">
-            <div>
-              <dt>What happens next</dt>
-              <dd>
-                A property manager reviews your details and contacts you
-                directly — by phone or email, whichever you prefer.
-              </dd>
-            </div>
-            <div>
-              <dt>No obligation</dt>
-              <dd>Requesting an appraisal doesn’t commit you to anything.</dd>
-            </div>
-          </dl>
+          <div className="appraisal__steps">
+            <span className="appraisal__steps-label">What happens next</span>
+            <ol className="appraisal__steps-list">
+              <li>
+                <span className="appraisal__step-num">01</span>
+                <div>
+                  <h4>We review your property</h4>
+                  <p>We review the information you’ve provided and assess the property.</p>
+                </div>
+              </li>
+              <li>
+                <span className="appraisal__step-num">02</span>
+                <div>
+                  <h4>We contact you</h4>
+                  <p>An APN property manager gets in touch directly.</p>
+                </div>
+              </li>
+              <li>
+                <span className="appraisal__step-num">03</span>
+                <div>
+                  <h4>You decide</h4>
+                  <p>There’s no obligation to appoint APN.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
         </div>
 
         <div className="appraisal__form-wrap">

@@ -2,17 +2,17 @@ const PROBLEMS = [
   {
     tag: '01',
     title: 'The workload',
-    copy: 'Vacancies, maintenance, arrears and day-to-day tenant communication all take time — time most landlords don’t have spare.',
+    copy: 'Vacancies, maintenance, inspections, arrears and day-to-day tenant communication all take time — time most landlords don’t have.',
   },
   {
     tag: '02',
     title: 'The silence',
-    copy: 'You shouldn’t have to chase your property manager to find out what’s going on with your own property.',
+    copy: 'You shouldn’t have to chase your property manager to find out what’s happening with your own property.',
   },
   {
     tag: '03',
-    title: 'The guesswork',
-    copy: 'You should understand what’s happening with your property, why it’s happening, and what happens next.',
+    title: 'The uncertainty',
+    copy: 'You should understand what’s happening with your property, why it’s happening and what comes next.',
   },
 ];
 
@@ -36,6 +36,11 @@ export default function LandlordProblem() {
             </div>
           ))}
         </div>
+
+        <p className="problem__bridge">
+          That’s what professional property management is supposed to take
+          off your plate.
+        </p>
       </div>
     </section>
   );

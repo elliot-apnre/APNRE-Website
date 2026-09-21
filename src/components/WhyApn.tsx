@@ -2,16 +2,19 @@ import agentPhoto from '../assets/photos/agent-placing-sold-sticker.jpg';
 
 const REASONS = [
   {
-    title: 'Local knowledge',
-    copy: 'APN operates across Adelaide and Mount Gambier, with an office in each.',
+    tag: 'Local knowledge',
+    title: 'Local people. Local property knowledge.',
+    copy: 'APN operates across Adelaide and Mount Gambier, with people on the ground in both markets.',
   },
   {
-    title: 'A named property manager',
-    copy: 'You will know exactly who is managing your property, and how to reach them directly.',
+    tag: 'A named property manager',
+    title: 'Know exactly who’s looking after it.',
+    copy: 'You’ll know who is responsible for your property and how to reach them directly.',
   },
   {
-    title: 'Owner-first thinking',
-    copy: 'The property is yours. Our role is to manage it professionally and keep you informed so you can make your own decisions.',
+    tag: 'Owner-first thinking',
+    title: 'You own the property. You make the decisions.',
+    copy: 'Our job is to manage the property professionally, keep you informed and give you the information you need to make your own decisions.',
   },
 ];
 
@@ -21,13 +24,12 @@ export default function WhyApn() {
       <div className="wrap why__grid">
         <div className="why__copy">
           <span className="eyebrow">Why landlords choose APN</span>
-          <h2 className="h-1">
-            The difference isn’t a slogan. It’s who answers the phone.
-          </h2>
+          <h2 className="h-1">A property manager you can actually reach.</h2>
 
           <ul className="why__list">
             {REASONS.map((r) => (
-              <li key={r.title}>
+              <li key={r.tag}>
+                <span className="why__reason-tag">{r.tag}</span>
                 <h3 className="h-3">{r.title}</h3>
                 <p className="body-copy">{r.copy}</p>
               </li>

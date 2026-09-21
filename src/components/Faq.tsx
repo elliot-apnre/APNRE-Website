@@ -1,23 +1,31 @@
 const FAQS = [
   {
+    q: 'What does APN’s property management service include?',
+    a: 'Finding and screening tenants, collecting rent, routine and entry/exit inspections, coordinating maintenance and repairs, and keeping you informed about your property. Get in touch and your property manager can walk you through what that looks like for your specific property.',
+  },
+  {
+    q: 'What happens when something needs repairing?',
+    a: 'Your property manager coordinates qualified tradespeople to get it sorted and keeps you informed about what’s happening and why. If you’d like the specifics of how repairs are handled for your property, ask your property manager directly.',
+  },
+  {
     q: 'How much does property management cost?',
-    a: 'Management fees vary depending on your property and what you need. Get in touch and we\u2019ll give you a straight answer for your specific property.',
+    a: 'Management fees vary depending on your property and what you need. Get in touch and we’ll give you a straight answer for your specific property.',
   },
   {
     q: 'Can I change property managers if my property is currently tenanted?',
-    a: 'Yes \u2014 it\u2019s a normal process and doesn\u2019t need to disrupt an existing tenancy. Tell us your situation and we\u2019ll explain how it would work for your property.',
+    a: 'Yes — it’s a normal process and doesn’t need to disrupt an existing tenancy. Tell us your situation and we’ll explain how it would work for your property.',
   },
   {
     q: 'Who will manage my property, and can I speak to them directly?',
-    a: 'A named property manager from our team. You\u2019ll know who they are and be able to reach them directly.',
+    a: 'A named property manager from our team. You’ll know who they are and be able to reach them directly.',
   },
   {
     q: 'Can APN manage my property if I live interstate?',
-    a: 'Get in touch with the details of your property and where you\u2019re based, and we\u2019ll let you know how we can help.',
+    a: 'Get in touch with the details of your property and where you’re based, and we’ll let you know how we can help.',
   },
   {
     q: 'How quickly can my property be leased?',
-    a: 'This depends on the property, the market, and the time of year. Ask us for a rental appraisal and we\u2019ll give you a realistic view for your property.',
+    a: 'This depends on the property, the market, and the time of year. Ask us for a rental appraisal and we’ll give you a realistic view for your property.',
   },
 ];
 

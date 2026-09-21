@@ -100,7 +100,7 @@ input, select, textarea {
 }
 
 .section {
-  padding: clamp(56px, 9vw, 128px) 0;
+  padding: clamp(46px, 7.2vw, 104px) 0;
 }
 
 .section-dark {
@@ -426,7 +426,7 @@ input, select, textarea {
 
 .problem__head {
   max-width: 680px;
-  margin-bottom: 56px;
+  margin-bottom: 44px;
 }
 
 .problem__head .eyebrow {
@@ -462,6 +462,14 @@ input, select, textarea {
   margin-bottom: 10px;
 }
 
+.problem__bridge {
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--charcoal-900);
+}
+
 @media (max-width: 760px) {
   .problem__grid {
     grid-template-columns: 1fr;
@@ -492,28 +500,39 @@ input, select, textarea {
 }
 
 .why__copy h2 {
-  margin-bottom: 36px;
-  max-width: 16ch;
+  margin-bottom: 30px;
+  max-width: 18ch;
 }
 
 .why__list {
   list-style: none;
-  margin: 0 0 40px;
+  margin: 0 0 32px;
   padding: 0;
   display: grid;
-  gap: 26px;
+  gap: 22px;
   border-top: 1px solid var(--line-dark);
-  padding-top: 26px;
+  padding-top: 22px;
 }
 
 .why__list li {
   border-bottom: 1px solid var(--line-dark);
-  padding-bottom: 26px;
+  padding-bottom: 22px;
 }
 
 .why__list li:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+.why__reason-tag {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 8px;
 }
 
 .why__list h3 {
@@ -525,7 +544,7 @@ input, select, textarea {
   font-size: 0.88rem;
   color: rgba(246, 244, 238, 0.55);
   max-width: 52ch;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .why__media {
@@ -563,7 +582,7 @@ input, select, textarea {
 
 .team__head {
   max-width: 620px;
-  margin-bottom: 52px;
+  margin-bottom: 42px;
 }
 
 .team__head .eyebrow {
@@ -574,16 +593,50 @@ input, select, textarea {
   margin-bottom: 14px;
 }
 
+.team__group {
+  margin-bottom: 36px;
+}
+
+.team__group-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  border-top: 1px solid var(--line-light);
+  padding-top: 18px;
+  margin-bottom: 24px;
+}
+
 .team__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(20px, 3vw, 32px) clamp(24px, 4vw, 48px);
-  margin-bottom: 40px;
   max-width: 980px;
 }
 
 .team__card {
   text-align: left;
+}
+
+.team__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.team__contact a {
+  text-decoration: none;
+  color: var(--lime-ink);
+}
+
+.team__contact a:hover {
+  color: var(--charcoal-900);
 }
 
 .team__portrait {
@@ -619,7 +672,7 @@ input, select, textarea {
 
 .team__cta {
   border-top: 1px solid var(--line-light);
-  padding-top: 36px;
+  padding-top: 28px;
 }
 
 @media (max-width: 560px) {
@@ -649,7 +702,7 @@ input, select, textarea {
 }
 
 .proof__copy .body-copy {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .proof__link {
@@ -723,24 +776,53 @@ input, select, textarea {
 }
 
 .appraisal__copy .lede {
-  margin-bottom: 36px;
+  margin-bottom: 30px;
 }
 
-.appraisal__facts {
-  display: grid;
-  gap: 22px;
-  border-top: 1px solid var(--line-light);
-  padding-top: 24px;
-  margin: 0;
-}
-
-.appraisal__facts dt {
+.appraisal__steps-label {
+  display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  margin-bottom: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--lime-deep);
+  border-top: 1px solid var(--line-light);
+  padding-top: 20px;
+  margin-bottom: 18px;
 }
 
-.appraisal__facts dd {
+.appraisal__steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+}
+
+.appraisal__steps-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.appraisal__step-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--lime-deep);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.appraisal__steps-list h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.appraisal__steps-list p {
   margin: 0;
   color: var(--charcoal-600);
   max-width: 46ch;
@@ -869,7 +951,7 @@ input, select, textarea {
 
 .switch {
   position: relative;
-  padding: clamp(72px, 12vw, 160px) 0;
+  padding: clamp(58px, 9.6vw, 128px) 0;
   overflow: hidden;
   color: var(--paper);
 }
@@ -924,7 +1006,7 @@ input, select, textarea {
 
 .faq__head {
   max-width: 620px;
-  margin-bottom: 44px;
+  margin-bottom: 36px;
 }
 
 .faq__head .eyebrow {
@@ -975,7 +1057,7 @@ input, select, textarea {
 }
 
 .faq__more {
-  margin-top: 32px;
+  margin-top: 26px;
   color: var(--charcoal-600);
 }
 
@@ -1003,7 +1085,7 @@ input, select, textarea {
 }
 
 .final-cta__inner .lede {
-  margin: 0 auto 36px;
+  margin: 0 auto 30px;
   text-align: center;
 }
 
@@ -1028,14 +1110,14 @@ input, select, textarea {
 .site-footer {
   background: var(--charcoal-900);
   color: rgba(246, 244, 238, 0.72);
-  padding-top: 64px;
+  padding-top: 54px;
 }
 
 .site-footer__inner {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 32px;
-  padding-bottom: 48px;
+  padding-bottom: 40px;
   border-bottom: 1px solid var(--line-dark);
 }
 

@@ -9,20 +9,18 @@ export default function Hero() {
       </div>
 
       <div className="wrap hero__content">
-        <div className="file-tag hero__filetag">FILE — LANDLORD ENQUIRY</div>
-
         <h1 className="h-display hero__headline">
-          Your property
+          Your property.
           <br />
-          is an asset.
+          Your investment.
           <br />
-          <span className="hero__headline-accent">We manage it like one.</span>
+          <span className="hero__headline-accent">Your person.</span>
         </h1>
 
         <p className="lede hero__lede">
-          Professional property management for landlords across Adelaide and Mount
-          Gambier — from a team who'll tell you what's happening with your
-          investment, and why.
+          Professional property management for landlords across Adelaide and
+          Mount Gambier — with a named property manager you can actually
+          reach.
         </p>
 
         <div className="hero__actions">
@@ -30,7 +28,7 @@ export default function Hero() {
             Get My Free Rental Appraisal
           </a>
           <a href="#switch" className="btn btn-outline-light">
-            I'm Thinking of Changing Property Managers
+            Thinking of Switching?
           </a>
         </div>
 

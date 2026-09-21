@@ -1,6 +1,32 @@
-import { TEAM } from '../data/team';
+import { TEAM, type TeamMember } from '../data/team';
+
+function TeamCard({ member }: { member: TeamMember }) {
+  return (
+    <div className="team__card">
+      <div className="team__portrait">
+        <img
+          src={member.photo}
+          alt={member.name}
+          style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
+        />
+      </div>
+      <h3 className="h-3">{member.name}</h3>
+      <p className="team__role">{member.role}</p>
+      <p className="team__bio">{member.bio}</p>
+      {(member.phone || member.email) && (
+        <p className="team__contact">
+          {member.phone && <a href={`tel:${member.phone.replace(/\s+/g, '')}`}>{member.phone}</a>}
+          {member.email && <a href={`mailto:${member.email}`}>{member.email}</a>}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function Team() {
+  const propertyManagers = TEAM.filter((m) => m.group === 'property-management');
+  const leadership = TEAM.filter((m) => m.group === 'leadership');
+
   return (
     <section id="team" className="section section-paper team">
       <div className="wrap">
@@ -12,21 +38,22 @@ export default function Team() {
           </p>
         </div>
 
-        <div className="team__grid">
-          {TEAM.map((member) => (
-            <div className="team__card" key={member.name}>
-              <div className="team__portrait">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
-                />
-              </div>
-              <h3 className="h-3">{member.name}</h3>
-              <p className="team__role">{member.role}</p>
-              <p className="team__bio">{member.bio}</p>
-            </div>
-          ))}
+        <div className="team__group">
+          <h3 className="team__group-label">Property Management</h3>
+          <div className="team__grid">
+            {propertyManagers.map((member) => (
+              <TeamCard member={member} key={member.name} />
+            ))}
+          </div>
+        </div>
+
+        <div className="team__group">
+          <h3 className="team__group-label">Leadership / Sales</h3>
+          <div className="team__grid">
+            {leadership.map((member) => (
+              <TeamCard member={member} key={member.name} />
+            ))}
+          </div>
         </div>
 
         <div className="team__cta">

@@ -3,13 +3,13 @@ export default function FinalCta() {
     <section className="section section-dark final-cta">
       <div className="wrap final-cta__inner">
         <h2 className="h-display final-cta__headline">
-          Ready to take the work
+          Ready for property management
           <br />
-          out of property management?
+          that feels more straightforward?
         </h2>
         <p className="lede">
-          Let’s talk about your property, your goals, and what professional
-          management could look like.
+          Tell us about your property and we’ll talk through what APN could
+          do for you.
         </p>
         <div className="final-cta__actions">
           <a href="#appraisal" className="btn btn-primary">

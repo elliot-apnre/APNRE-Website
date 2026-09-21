@@ -22,10 +22,10 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="APN Real Estate" />
-    <meta property="og:title" content="Your Property Is An Asset. We Manage It Like One." />
+    <meta property="og:title" content="Your Property. Your Investment. Your Person. | APN Real Estate" />
     <meta
       property="og:description"
-      content="Free rental appraisals for landlords in Adelaide and Mount Gambier. Talk to the property managers who'll actually be looking after your investment."
+      content="Property management for landlords across Adelaide and Mount Gambier, with a named property manager you can actually reach. Get a free rental appraisal."
     />
     <meta property="og:image" content="https://www.apnrealestate.com.au/og-cover.jpg" />
     <meta property="og:url" content="https://www.apnrealestate.com.au/property-management" />
@@ -33,13 +33,56 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Your Property Is An Asset. We Manage It Like One." />
+    <meta name="twitter:title" content="Your Property. Your Investment. Your Person. | APN Real Estate" />
     <meta
       name="twitter:description"
-      content="Free rental appraisals for landlords in Adelaide and Mount Gambier — APN Real Estate."
+      content="Property management for landlords across Adelaide and Mount Gambier, with a named property manager you can actually reach."
     />
     <meta name="twitter:image" content="https://www.apnrealestate.com.au/og-cover.jpg" />
 
+    <!--
+      LocalBusiness structured data, limited to details already verified
+      elsewhere on this page (see Footer.tsx): the two office addresses and
+      the phone number. No ratings, review counts, or other unverified
+      claims are included here — see the Proof/Faq sections' comments for
+      why those are deliberately left out.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "APN Real Estate",
+        "alternateName": "Adelaide Property Network",
+        "telephone": "+61-1300-123-276",
+        "areaServed": ["Adelaide SA", "Mount Gambier SA"],
+        "location": [
+          {
+            "@type": "Place",
+            "name": "APN Real Estate — Adelaide",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Level 1 / 420B, Cnr Main North Road and Barton Street",
+              "addressLocality": "Blair Athol",
+              "addressRegion": "SA",
+              "postalCode": "5084",
+              "addressCountry": "AU"
+            }
+          },
+          {
+            "@type": "Place",
+            "name": "APN Real Estate — Mount Gambier",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "178 Commercial Street East",
+              "addressLocality": "Mount Gambier",
+              "addressRegion": "SA",
+              "postalCode": "5290",
+              "addressCountry": "AU"
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
