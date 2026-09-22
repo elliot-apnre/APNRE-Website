@@ -46,7 +46,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Marissa Bowell',
-    role: 'Property Manager',
+    role: 'Property Manager / Sales Representative',
     initials: 'MB',
     photo: marissaPhoto,
     group: 'property-management',
@@ -55,7 +55,7 @@ export const TEAM: TeamMember[] = [
     // shoulders-up headshot until it can be reshot. Tune or remove once a
     // consistent photo is in.
     focalPoint: 'center 15%',
-    bio: 'Marissa manages a portfolio of rental properties for APN landlords, from routine inspections through to maintenance requests.',
+    bio: 'Marissa is a Property Manager and Sales Representative at APN, with four years of property management experience — covering tenant screening, lease management and maintenance for landlords, as well as sales. Outside work, she’s the team manager for her son’s local footy team, alongside her husband, who coaches — and otherwise usually active or spending time with family and friends.',
   },
   {
     name: 'Patrick Nhim',
