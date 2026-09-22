@@ -3,6 +3,7 @@ import brettPhoto from '../assets/team/brett-david.jpg';
 import jennyPhoto from '../assets/team/jenny-saffin.jpg';
 import lukePhoto from '../assets/team/luke-whittaker.jpg';
 import marissaPhoto from '../assets/team/marissa-bowell.jpg';
+import breePhoto from '../assets/team/bree.jpg';
 
 export type TeamGroup = 'property-management' | 'leadership';
 
@@ -15,8 +16,9 @@ export interface TeamMember {
   /** Concise, factual, role-based copy — no invented biographical detail
    *  (years of experience, personal history, etc). Replace with a real
    *  first-person bio if/when APN supplies one; see
-   *  docs/team-photos-and-bios.md. */
-  bio: string;
+   *  docs/team-photos-and-bios.md. Optional — some roles (e.g.
+   *  reception) are shown with no bio by request, not by omission. */
+  bio?: string;
   /** Direct phone/email — only set once verified with APN. Never invent
    *  these; a landlord seeing a wrong number is worse than seeing none. */
   phone?: string;
@@ -43,6 +45,13 @@ export const TEAM: TeamMember[] = [
     photo: lukePhoto,
     group: 'property-management',
     bio: 'Luke manages a portfolio of rental properties for APN landlords, keeping tenancies running smoothly and owners informed.',
+  },
+  {
+    name: 'Bree',
+    role: 'Mount Gambier Receptionist',
+    initials: 'B',
+    photo: breePhoto,
+    group: 'property-management',
   },
   {
     name: 'Marissa Bowell',

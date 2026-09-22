@@ -662,11 +662,10 @@ input, select, textarea {
 
 @media (min-width: 860px) {
   .team__grid {
-    /* Matches the current property-management headcount (3) exactly —
+    /* Matches the current property-management headcount (4) exactly —
        a complete row, not a partial one with an empty trailing gap.
        Update this if the roster count changes. */
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 900px;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

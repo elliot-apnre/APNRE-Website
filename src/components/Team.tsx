@@ -22,7 +22,7 @@ function TeamCard({ member }: { member: TeamMember }) {
       </div>
       <h3 className="h-3">{member.name}</h3>
       <p className="team__role">{member.role}</p>
-      <p className="team__bio">{member.bio}</p>
+      {member.bio && <p className="team__bio">{member.bio}</p>}
       <ContactLines member={member} />
     </div>
   );
@@ -41,7 +41,7 @@ function TeamLeader({ member }: { member: TeamMember }) {
       <div className="team__leader-body">
         <h3 className="h-3">{member.name}</h3>
         <p className="team__role">{member.role}</p>
-        <p className="team__bio">{member.bio}</p>
+        {member.bio && <p className="team__bio">{member.bio}</p>}
         <ContactLines member={member} />
       </div>
     </div>
