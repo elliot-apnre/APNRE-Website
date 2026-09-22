@@ -330,6 +330,18 @@ input, select, textarea {
   }
 }
 
+@media (max-width: 760px) {
+  /* Below this width the sticky bottom CTA (.mobile-cta) is on screen
+     permanently, so keeping the header's own CTA visible too means two
+     persistent "Free Rental Appraisal" buttons stacked with whatever
+     in-page CTA is in view — up to three at once while scrolling.
+     Drop the header CTA here and let the bottom bar be the single
+     persistent mobile CTA. */
+  .site-header__cta {
+    display: none;
+  }
+}
+
 /* ============================================================
    Hero
    ============================================================ */
