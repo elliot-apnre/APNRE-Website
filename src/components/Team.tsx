@@ -74,9 +74,11 @@ export default function Team() {
 
         <div className="team__group">
           <h3 className="team__group-label">Leadership / Sales</h3>
-          {leadership.map((member) => (
-            <TeamLeader member={member} key={member.name} />
-          ))}
+          <div className="team__leaders">
+            {leadership.map((member) => (
+              <TeamLeader member={member} key={member.name} />
+            ))}
+          </div>
         </div>
 
         <div className="team__cta">

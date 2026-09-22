@@ -34,7 +34,7 @@ export const TEAM: TeamMember[] = [
     initials: 'JS',
     photo: jennyPhoto,
     group: 'property-management',
-    bio: 'Jenny manages a portfolio of rental properties for APN landlords — inspections, maintenance and day-to-day tenant communication.',
+    bio: 'Jenny is a Property Manager at APN, working with landlords and tenants for more than two years. She owns an investment property herself, so she manages other people’s properties the way she’d want her own managed. Outside work, she’s usually at the gym, spending time with family and friends, or travelling.',
   },
   {
     name: 'Luke Whittaker',
@@ -58,19 +58,19 @@ export const TEAM: TeamMember[] = [
     bio: 'Marissa manages a portfolio of rental properties for APN landlords, from routine inspections through to maintenance requests.',
   },
   {
-    name: 'Brett David',
-    role: 'Regional Manager / Head of Leasing & Accounts',
-    initials: 'BD',
-    photo: brettPhoto,
-    group: 'property-management',
-    bio: 'Brett is APN’s Regional Manager and Head of Leasing & Accounts, and a licensed sales agent. He’s worked in property management for more than six years, managing rental properties for APN landlords and looking after the accounts side of the business. Outside work, he’s usually found fishing in local club tournaments.',
-  },
-  {
     name: 'Patrick Nhim',
     role: 'Director',
     initials: 'PN',
     photo: patrickPhoto,
     group: 'leadership',
     bio: 'Patrick founded the business — originally Adelaide Property Network, now APN Real Estate — and leads its sales team today. Property management sits alongside that sales work rather than apart from it, so Patrick has direct oversight of how the two sides operate together, and a day-to-day view of the Adelaide and Mount Gambier markets that informs decisions made on the property management side for owners.',
+  },
+  {
+    name: 'Brett David',
+    role: 'Regional Manager / Head of Leasing & Accounts',
+    initials: 'BD',
+    photo: brettPhoto,
+    group: 'leadership',
+    bio: 'Brett is APN’s Regional Manager and Head of Leasing & Accounts, and a licensed sales agent. He’s worked in property management for more than six years, managing rental properties for APN landlords and looking after the accounts side of the business. Outside work, he’s usually found fishing in local club tournaments.',
   },
 ];

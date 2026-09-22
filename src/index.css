@@ -650,12 +650,22 @@ input, select, textarea {
 
 @media (min-width: 860px) {
   .team__grid {
-    grid-template-columns: repeat(4, 1fr);
+    /* Matches the current property-management headcount (3) exactly —
+       a complete row, not a partial one with an empty trailing gap.
+       Update this if the roster count changes. */
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
   }
 }
 
 .team__card {
   text-align: left;
+}
+
+.team__leaders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .team__leader {
