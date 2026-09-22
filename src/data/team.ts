@@ -32,11 +32,11 @@ export interface TeamMember {
 export const TEAM: TeamMember[] = [
   {
     name: 'Luke Whittaker',
-    role: 'Property Manager',
+    role: 'Property Manager, Mount Gambier',
     initials: 'LW',
     photo: lukePhoto,
     group: 'property-management',
-    bio: 'Luke manages a portfolio of rental properties for APN landlords, keeping tenancies running smoothly and owners informed.',
+    bio: 'Luke is a Property Manager based in Mount Gambier, with 14 months at APN — all of it in property management. He handles complex tenancies and insurance claims, and also works across commercial sales and leasing and assists with residential sales. Outside work, he’s a family man who spends weekends watching F1, AFL, soccer or cricket.',
   },
   {
     name: 'Marissa Bowell',
