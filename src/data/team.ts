@@ -59,11 +59,11 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Brett David',
-    role: 'Property Manager / Accounts',
+    role: 'Regional Manager / Head of Leasing & Accounts',
     initials: 'BD',
     photo: brettPhoto,
     group: 'property-management',
-    bio: 'Brett manages a portfolio of rental properties for APN landlords and looks after the accounts side of property management, including rent disbursements to owners.',
+    bio: 'Brett is APN’s Regional Manager and Head of Leasing & Accounts, and a licensed sales agent. He’s worked in property management for more than six years, managing rental properties for APN landlords and looking after the accounts side of the business. Outside work, he’s usually found fishing in local club tournaments.',
   },
   {
     name: 'Patrick Nhim',
