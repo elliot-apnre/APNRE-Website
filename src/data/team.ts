@@ -31,14 +31,6 @@ export interface TeamMember {
 
 export const TEAM: TeamMember[] = [
   {
-    name: 'Jenny Saffin',
-    role: 'Property Manager',
-    initials: 'JS',
-    photo: jennyPhoto,
-    group: 'property-management',
-    bio: 'Jenny is a Property Manager at APN, working with landlords and tenants for more than two years. She owns an investment property herself, so she manages other people’s properties the way she’d want her own managed. Outside work, she’s usually at the gym, spending time with family and friends, or travelling.',
-  },
-  {
     name: 'Luke Whittaker',
     role: 'Property Manager',
     initials: 'LW',
@@ -47,19 +39,27 @@ export const TEAM: TeamMember[] = [
     bio: 'Luke manages a portfolio of rental properties for APN landlords, keeping tenancies running smoothly and owners informed.',
   },
   {
-    name: 'Bree',
-    role: 'Mount Gambier Receptionist',
-    initials: 'B',
-    photo: breePhoto,
-    group: 'property-management',
-  },
-  {
     name: 'Marissa Bowell',
     role: 'Property Manager / Sales Representative',
     initials: 'MB',
     photo: marissaPhoto,
     group: 'property-management',
     bio: 'Marissa is a Property Manager and Sales Representative at APN, with four years of property management experience — covering tenant screening, lease management and maintenance for landlords, as well as sales. Outside work, she’s the team manager for her son’s local footy team, alongside her husband, who coaches — and otherwise usually active or spending time with family and friends.',
+  },
+  {
+    name: 'Jenny Saffin',
+    role: 'Property Manager',
+    initials: 'JS',
+    photo: jennyPhoto,
+    group: 'property-management',
+    bio: 'Jenny is a Property Manager at APN, working with landlords and tenants for more than two years. She owns an investment property herself, so she manages other people’s properties the way she’d want her own managed. Outside work, she’s usually at the gym, spending time with family and friends, or travelling.',
+  },
+  {
+    name: 'Bree',
+    role: 'Mount Gambier Receptionist',
+    initials: 'B',
+    photo: breePhoto,
+    group: 'property-management',
   },
   {
     name: 'Patrick Nhim',
