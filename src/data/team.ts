@@ -59,11 +59,6 @@ export const TEAM: TeamMember[] = [
     initials: 'MB',
     photo: marissaPhoto,
     group: 'property-management',
-    // This photo is framed noticeably tighter/closer than the others —
-    // nudge the crop down slightly so it reads more like a standard
-    // shoulders-up headshot until it can be reshot. Tune or remove once a
-    // consistent photo is in.
-    focalPoint: 'center 15%',
     bio: 'Marissa is a Property Manager and Sales Representative at APN, with four years of property management experience — covering tenant screening, lease management and maintenance for landlords, as well as sales. Outside work, she’s the team manager for her son’s local footy team, alongside her husband, who coaches — and otherwise usually active or spending time with family and friends.',
   },
   {

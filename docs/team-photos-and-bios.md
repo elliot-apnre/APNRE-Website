@@ -2,44 +2,37 @@
 
 ## Photos
 
-The team is now split into two groups: **Property Management** (Jenny,
-Luke, Marissa, Brett — a four-up grid, `.team__grid`) and **Leadership /
-Sales** (Patrick — a wider single "spotlight" card, `.team__leader`, since
-one person alone in a grid tile reads as an accident rather than a
-deliberate layout). The four property-management photo boxes are a fixed,
-identical size (`.team__portrait` is a 3:4 box with `object-fit: cover` in
-`src/index.css`), so the *boxes* are consistent. What's inconsistent is the
-source photos themselves:
+The team is split into two groups: **Property Management** (Jenny, Luke,
+Bree, Marissa — a four-up grid, `.team__grid`, circular portraits) and
+**Leadership / Sales** (Patrick, Brett — wider "spotlight" cards,
+`.team__leader`, since one person alone in a grid tile reads as an
+accident rather than a deliberate layout).
 
-- Jenny and Luke are shot at a similar distance/style (head-and-shoulders,
-  office-window bokeh background).
-- Marissa's photo is framed noticeably tighter/closer and has a different
-  background, which reads as a different shoot.
-
-Two ways to fix this, in order of how much it actually solves it:
-
-1. **Reshoot (or ask for a comparable existing shot) so all three photos are
-   the same distance, background style, and lighting.** This is the real
-   fix — cropping can't manufacture a wider shot from a tight one.
-2. **In the meantime**, `src/data/team.ts` now has an optional `focalPoint`
-   field per person (CSS `object-position`) so you can nudge how a given
-   photo sits inside its box without touching the image file. I've set
-   Marissa's to `'center 15%'` as a starting guess to pull the crop back a
-   bit — open the site and eyeball it; adjust the percentage (or remove the
-   field to go back to plain `center`) until it looks right relative to the
-   other two.
+The four property-management photos were originally different distances/
+zoom levels (some tightly framed close-ups, some wider with more shoulder
+and background visible), which made the row read as "not level" even
+though the four circle containers were pixel-identical. `object-position`
+(the `focalPoint` field) can't fix that on its own — it can only shift
+*which part* of an image shows, not rescale a subject who was framed
+closer or further away. The actual fix was cropping each source photo
+(`src/assets/team/*.jpg`) to a consistent head size and eye-line
+*before* it reaches the browser — see the crop commands in git history
+if a new photo needs the same treatment. All four are now pre-cropped to
+an exact 640×640 square, so `focalPoint` is unused for this group (it's a
+no-op once width/height already match the box exactly). Brett's and
+Patrick's leadership photos aren't part of this row-alignment constraint
+since each sits in its own card, not a shared row.
 
 ## Bios
 
-`src/data/team.ts` has a `bio` field on every team member. Each one is
-currently a short, factual, role-based line (what they manage, what the
-role covers) rather than a personal biography — nothing invented about
-experience, background or personal detail. That's a deliberate stand-in,
-not a placeholder: it's true and fine to ship as-is, but it reads as a
-job description rather than a person, which is worth improving.
+`bio` is optional on `TeamMember` — Bree has none by request (receptionist,
+no bio wanted), which is a deliberate choice, not a gap to fill.
 
-To make these read more like actual people, the fastest path is a short
-async brief to each person — something like:
+Jenny, Marissa, Brett and Patrick have real supplied bios. Luke's is still
+the original short, factual, role-based stand-in (what he manages, not a
+personal biography) — fine to ship as-is, but worth the same treatment
+the others got. To get a real one, the fastest path is a short async
+brief to him — something like:
 
 > For the new website, we're adding a two-to-three sentence intro under
 > your photo. Could you send me:
