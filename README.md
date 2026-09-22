@@ -35,33 +35,25 @@ npm run preview     # preview the production build
 `dist/` is fully static — deploy it to any static host (Netlify, Vercel,
 S3 + CloudFront, cPanel, etc).
 
-## Before this goes live — three real gaps to close
+## Launch-blocking items — status
 
-**1. Connect the enquiry form.**
-`src/components/AppraisalForm.tsx` has a `FORM_ENDPOINT` constant at the
-top, currently empty. While it's empty, the form shows a visible
-development notice and, on submit, an honest "this wasn't sent anywhere"
-message — it does **not** fake a successful lead capture. Set
-`FORM_ENDPOINT` to a real endpoint (your CRM, a serverless function,
-Formspree, a Zapier webhook, etc.) and the form will do a real `fetch`
-and show a genuine success/error state instead.
+**1. Enquiry form — connected.**
+`src/components/AppraisalForm.tsx` posts to `/api/lead`
+(`functions/api/lead.ts`, a Cloudflare Pages Function), which forwards
+to a Google Sheet via an Apps Script webhook. See
+`docs/google-sheet-lead-webhook.md` for the webhook setup and
+`SHEETS_WEBHOOK_URL` in Cloudflare Pages' environment variables.
 
-**2. Add the real realestate.com.au reviews link.**
-`src/components/Proof.tsx` has a `REVIEWS_PROFILE_URL` constant currently
-set to `'#'`. We deliberately removed the hardcoded rating/review-count/
-leasing-volume figures from the previous draft — they move over time and
-a stale number on a live campaign page undermines trust more than no
-number does. Point this at APN's actual agency profile URL before
-launch, and consider swapping the sold-sign photos for whatever's most
-current if these ones no longer reflect recent work.
+**2. Reviews link — connected.**
+`src/components/Proof.tsx`'s `REVIEWS_PROFILE_URL` points at APN's real
+realestate.com.au agency profile. Rating/review-count/leasing-volume
+figures are still deliberately not hardcoded anywhere on the page —
+those move over time and a stale number undermines trust more than no
+number does.
 
-**3. Confirm the production domain.**
-`index.html` has a `canonical` URL and Open Graph tags pointing at
-`apnrealestate.com.au` as a placeholder — this domain has not been
-confirmed as registered or live (the only verified domain in the
-supplied material was the pre-rebrand `adelaidepropertynetwork.com.au`).
-There's an HTML comment at the top of the `<head>` flagging this —
-update every occurrence once the real campaign URL is known.
+**3. Production domain — confirmed: `apnre.com.au`.**
+`index.html`'s canonical URL, Open Graph tags, and Twitter card tags
+all point at `https://apnre.com.au/`.
 
 ## Already fixed / already real
 
