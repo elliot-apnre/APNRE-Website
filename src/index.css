@@ -1590,68 +1590,11 @@ input, select, textarea {
     var(--charcoal-900);
 }
 
-/* ============================================================
-   Logo lockup (components/Logo.tsx)
-   ============================================================ */
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.logo__mark {
-  width: auto;
-  height: 46px;
-}
-
-.logo__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.logo__word {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  color: var(--charcoal-900);
-  white-space: nowrap;
-}
-
-.logo__sub {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.82rem;
-  color: var(--grey-mid);
-  margin-top: 2px;
-}
-
-.logo--dark .logo__word {
-  color: var(--paper);
-}
-
-.logo--dark .logo__sub {
-  color: rgba(246, 244, 238, 0.6);
-}
-
 .site-header__brand {
   text-decoration: none;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-}
-
-@media (max-width: 420px) {
-  .logo__mark {
-    height: 38px;
-  }
-  .logo__word {
-    font-size: 1.1rem;
-  }
 }
 
 /* ============================================================
@@ -2094,4 +2037,28 @@ input, select, textarea {
   .site-header__logo {
     height: 54px;
   }
+}
+
+/* Footer: main logo, and headings that line up whether or not they're
+   links (the linked ones get a 44px tap target, so all of them do). */
+.site-footer__logo img {
+  height: 96px;
+  width: auto;
+}
+
+.site-footer__brand .site-footer__logo {
+  display: inline-block;
+  min-height: 0;
+  margin-bottom: 16px;
+}
+
+.site-footer__col h4 {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 6px;
+}
+
+.site-footer__col p {
+  margin-top: 0;
 }

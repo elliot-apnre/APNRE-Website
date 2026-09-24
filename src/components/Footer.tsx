@@ -1,4 +1,4 @@
-import Logo from './Logo';
+import logoReversed from '../assets/logo/adelaide-property-network-logo-reversed.png';
 import { OFFICE_LIST } from '../data/offices';
 import {
   ABN,
@@ -28,9 +28,11 @@ export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
     <footer className="site-footer">
       <div className="wrap site-footer__inner">
         <div className="site-footer__brand">
-          <div className="site-footer__logo">
-            <Logo tone="dark" />
-          </div>
+          <a href="/" className="site-footer__logo">
+            {/* The main logo with its grey parts lightened so they read on
+                charcoal; the green is unchanged. */}
+            <img src={logoReversed} alt="Adelaide Property Network — APN Real Estate" />
+          </a>
           <p>Property management across Adelaide and Mount Gambier.</p>
         </div>
 

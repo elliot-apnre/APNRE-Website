@@ -114,9 +114,9 @@ public/
 - Logos: the Adelaide Property Network logo is the main brand logo, in
   the header on the homepage and the Adelaide page (and on the 404).
   The Mount Gambier page uses the Mount Gambier version. Both are set in
-  `src/data/offices.ts`. The footer uses the star mark plus "APN Real
-  Estate" (`src/components/Logo.tsx`), since the full logo's grey
-  lettering doesn't read on the charcoal footer.
+  `src/data/offices.ts`. The footer uses a copy of the main logo with
+  its greys lightened (`adelaide-property-network-logo-reversed.png`),
+  since the grey lettering doesn't read on charcoal.
 - Typefaces: Archivo (headings) + Public Sans (body), loaded via Google
   Fonts in `index.html`.
 - No AI-generated people or stock "shaking hands" photography anywhere —
