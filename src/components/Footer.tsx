@@ -2,6 +2,7 @@ import Logo from './Logo';
 import { OFFICE_LIST } from '../data/offices';
 import {
   ABN,
+  ACN,
   BUSINESS_NAME,
   LEGAL_ENTITY_NAME,
   PHONE_DISPLAY,
@@ -19,6 +20,7 @@ export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
   const registration = [
     LEGAL_ENTITY_NAME,
     ABN && `ABN ${ABN}`,
+    ACN && `ACN ${ACN}`,
     RLA_NUMBER && `RLA ${RLA_NUMBER}`,
   ].filter(Boolean);
 
