@@ -15,7 +15,11 @@ export default function OfficeHero({ office }: { office: Office }) {
       )}
 
       <div className="wrap hero__content">
-        <p className="hero__meta hero__meta--above">APN Real Estate · {office.name} office</p>
+        <p className="hero__meta hero__meta--above">
+          <a href="/">APN Real Estate</a>
+          <span aria-hidden="true">·</span>
+          <span>{office.name} office</span>
+        </p>
         <h1 className="h-display hero__headline">
           Property management
           <br />

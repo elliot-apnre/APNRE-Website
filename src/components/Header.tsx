@@ -69,6 +69,9 @@ export default function Header({ nav = HOME_NAV, currentOffice, ctaHref = '#appr
             </a>
           ))}
           {nav.length > 0 && <span className="site-header__nav-divider" aria-hidden="true" />}
+          {/* Off the homepage, a plain "Home" link — the logo alone isn't
+              an obvious way back to the landing page. */}
+          {!isHome && <a href="/">Home</a>}
           {OFFICE_LIST.map((o) => (
             <a
               href={o.path}
@@ -99,6 +102,15 @@ export default function Header({ nav = HOME_NAV, currentOffice, ctaHref = '#appr
 
       <div id="site-menu" className="site-menu" hidden={!menuOpen}>
         <nav className="wrap site-menu__inner" aria-label="Menu">
+          {!isHome && (
+            <ul className="site-menu__list">
+              <li>
+                <a href="/" className="site-menu__home">
+                  ← APN Real Estate home
+                </a>
+              </li>
+            </ul>
+          )}
           {nav.length > 0 && (
             <ul className="site-menu__list">
               {nav.map((link) => (

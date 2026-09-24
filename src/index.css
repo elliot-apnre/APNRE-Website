@@ -2079,3 +2079,8 @@ input, select, textarea {
   display: grid;
   gap: 6px;
 }
+
+.site-menu__list a.site-menu__home {
+  font-size: 1rem;
+  color: var(--charcoal-600);
+}
