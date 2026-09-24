@@ -24,6 +24,7 @@ interface HeaderProps {
 
 export default function Header({ nav = HOME_NAV, currentOffice }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const office = OFFICE_LIST.find((o) => o.id === currentOffice);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -34,8 +35,14 @@ export default function Header({ nav = HOME_NAV, currentOffice }: HeaderProps) {
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="wrap site-header__row">
-        <a href={currentOffice ? '/' : '#top'} className="site-header__brand" aria-label="APN Real Estate — home">
-          <img src={logoFull} alt="APN Real Estate" height={48} />
+        <a href={office ? '/' : '#top'} className="site-header__brand" aria-label="APN Real Estate — home">
+          {office ? (
+            // Office logos are stacked (mark over wordmark), so they need
+            // more height than the wide group logo to stay legible.
+            <img src={office.logo} alt={office.logoAlt} height={60} />
+          ) : (
+            <img src={logoFull} alt="APN Real Estate" height={48} />
+          )}
         </a>
         <nav className="site-header__nav" aria-label="Primary">
           {nav.map((link) => (

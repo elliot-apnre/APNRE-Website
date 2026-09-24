@@ -1,4 +1,6 @@
 import balconyView from '../assets/photos/balcony-view-hills.jpg';
+import adelaideLogo from '../assets/logo/adelaide-property-network-logo.png';
+import mountGambierLogo from '../assets/logo/mount-gambier-property-network-logo.png';
 
 export type OfficeId = 'adelaide' | 'mount-gambier';
 
@@ -36,6 +38,10 @@ export interface Office {
   name: string;
   /** Public URL path — matches the folder name of the HTML entry. */
   path: string;
+  /** Office-branded logo shown in the header on this office's page
+   *  (the homepage keeps the APN group logo). */
+  logo: string;
+  logoAlt: string;
   addressLines: [string, string];
   phone: string;
   /** Must be a real photo from this area. Leave unset to show a plain
@@ -65,6 +71,8 @@ export const OFFICES: Record<OfficeId, Office> = {
     id: 'adelaide',
     name: 'Adelaide',
     path: '/adelaide/',
+    logo: adelaideLogo,
+    logoAlt: 'Adelaide Property Network',
     addressLines: ['Level 1 / 420B, Cnr Main North Road', 'and Barton Street, Blair Athol SA 5084'],
     phone: '1300 123 276',
     heroPhoto: balconyView,
@@ -83,6 +91,8 @@ export const OFFICES: Record<OfficeId, Office> = {
     id: 'mount-gambier',
     name: 'Mount Gambier',
     path: '/mount-gambier/',
+    logo: mountGambierLogo,
+    logoAlt: 'Mount Gambier Property Network',
     addressLines: ['178 Commercial Street East,', 'Mount Gambier SA 5290'],
     phone: '1300 123 276',
     // Every photo supplied so far is from Adelaide (and the signage in
