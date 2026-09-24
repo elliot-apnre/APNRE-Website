@@ -12,6 +12,8 @@ appraisal form.
 - `/adelaide/` and `/mount-gambier/`: office pages, each with an office
   intro, that office's team, success stories and examples of work. See
   `docs/office-pages.md` for how to add stories and work examples.
+- `/privacy/`: privacy policy, linked from the footer and the form.
+  Update it whenever the form, analytics or ad tracking changes.
 
 ## Homepage structure
 
@@ -85,10 +87,13 @@ src/
   components/     one file per section, in page order
   data/team.ts    the team, with each person's group and office
   data/offices.ts office intros, addresses, stories, work examples
+  data/business.ts phone number, ABN / RLA / legal name for the footer
   partials/       <head> markup shared by every page (fonts, analytics)
   main.tsx        homepage entry; office-main.tsx is the office pages'
   assets/
-    logo/         APN logo files (transparent PNG versions included)
+    logo/         APN logo files. Only the star mark is used on the site
+                  (components/Logo.tsx); the others still say
+                  "Adelaide/Mount Gambier Property Network"
     photos/       supplied property/agent/sold-sign photography
     team/         supplied team portraits, cropped to 3:4
   index.css       design tokens + all section styles
@@ -102,7 +107,13 @@ public/
 ## Design notes
 
 - Colour palette sampled directly from the supplied logo: lime `#8dc600`,
-  brand grey `#6d6e71`, on a custom charcoal/warm-white system.
+  brand grey `#6d6e71`, on a custom charcoal/warm-white system. The logo
+  lime is the only green. It's too light for text on the paper
+  background, so text there is charcoal, and the lime goes on fills,
+  rules and underlines. Don't reintroduce darker "accessible" greens:
+  they read as a different, muddier brand colour.
+- One logo everywhere: the star mark plus "APN Real Estate" set in
+  Archivo (`src/components/Logo.tsx`), matching the Open Graph image.
 - Typefaces: Archivo (headings) + Public Sans (body), loaded via Google
   Fonts in `index.html`.
 - No AI-generated people or stock "shaking hands" photography anywhere —

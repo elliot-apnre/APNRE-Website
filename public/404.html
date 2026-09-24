@@ -9,8 +9,8 @@
       that doesn't match a built file. Its presence at the output root is
       also what turns OFF Pages' default SPA fallback (every unknown path
       returning index.html with a 200), which Google was reporting as soft
-      404s. The only valid routes are the built pages: "/", "/adelaide/"
-      and "/mount-gambier/" (see rollupOptions.input in vite.config.ts).
+      404s. The only valid routes are the built pages: "/", "/adelaide/",
+      "/mount-gambier/" and "/privacy/" (see rollupOptions.input in vite.config.ts).
 
       This file is copied verbatim from public/ — Vite doesn't process it —
       so keep it self-contained and only reference files in public/.
@@ -27,8 +27,7 @@
     <style>
       :root {
         --lime: #8dc600;
-        --lime-deep: #6fa300;
-        --lime-ink: #3f5c00;
+        --lime-light: #a3d93a;
         --charcoal-900: #17171a;
         --grey-mid: #6d6e71;
         --paper: #f6f4ee;
@@ -51,14 +50,27 @@
         text-align: center;
       }
       main { max-width: 520px; }
-      img { width: 180px; height: auto; margin: 0 auto 32px; display: block; }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 auto 32px;
+        text-decoration: none;
+        color: var(--charcoal-900);
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+      .logo img { height: 48px; width: auto; display: block; }
       .code {
         font-family: var(--font-display);
         font-weight: 700;
         font-size: 14px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: var(--lime-ink);
+        color: var(--charcoal-900);
         margin: 0 0 12px;
       }
       h1 {
@@ -79,12 +91,12 @@
         text-decoration: none;
         border-radius: 3px;
       }
-      a.button:hover, a.button:focus-visible { background: var(--lime-deep); }
+      a.button:hover, a.button:focus-visible { background: var(--lime-light); }
     </style>
   </head>
   <body>
     <main>
-      <a href="/"><img src="/apn-logo-full.png" alt="APN Real Estate" width="180" height="120" /></a>
+      <a class="logo" href="/"><img src="/apn-star-mark.png" alt="" width="47" height="48" />APN Real Estate</a>
       <p class="code">Error 404</p>
       <h1>We couldn't find that page</h1>
       <p>The link may be out of date, or the address may have been mistyped.</p>

@@ -1,5 +1,4 @@
-import soldFenden from '../assets/photos/sold-sign-fenden-rd.jpg';
-import soldRidley from '../assets/photos/sold-sign-ridley.jpg';
+import { OFFICE_LIST } from '../data/offices';
 
 // NOTE: We deliberately do not hardcode a review count, rating, or
 // leasing volume here. Those figures move over time and a stale number
@@ -7,16 +6,18 @@ import soldRidley from '../assets/photos/sold-sign-ridley.jpg';
 // APN's live realestate.com.au agency profile instead.
 const REVIEWS_PROFILE_URL = 'https://www.realestate.com.au/agency/adelaide-property-network-blair-athol-JIASZF';
 
-// NOTE: The two photos below are real APN "Sold" signage — evidence that
-// APN is an active, real local agency, not stock imagery. They are sales
-// results, not property-management results, so the copy here leads with
-// the property-management proof point (a named, reachable manager) and
-// uses the photos only as secondary evidence that APN is a genuine,
-// working local business rather than a shell operation.
+// Review quotes come from each office's successStories in
+// src/data/offices.ts (real quotes only, with the client's OK). The
+// homepage shows up to three. Until any exist this section is copy plus
+// the reviews link. It used to show photos of "Sold" signs, but those
+// carry the old Adelaide Property Network branding and are sales results
+// rather than property management ones.
+const QUOTES = OFFICE_LIST.flatMap((office) => office.successStories).slice(0, 3);
+
 export default function Proof() {
   return (
     <section id="proof" className="section section-paper-dim proof">
-      <div className="wrap proof__inner">
+      <div className={`wrap proof__inner${QUOTES.length === 0 ? ' proof__inner--solo' : ''}`}>
         <div className="proof__copy">
           <span className="eyebrow">Proof, not promises</span>
           <h2 className="h-2">Real people. Real properties. Real accountability.</h2>
@@ -36,16 +37,22 @@ export default function Proof() {
           </a>
         </div>
 
-        <div className="proof__media">
-          <figure>
-            <img src={soldFenden} alt="A Sold sign outside a property on Fenden Road, Salisbury, sold by APN" />
-            <figcaption>Fenden Road, Salisbury</figcaption>
-          </figure>
-          <figure>
-            <img src={soldRidley} alt="A Sold sign outside a property on Ridley Street, sold by APN" />
-            <figcaption>Ridley Street</figcaption>
-          </figure>
-        </div>
+        {QUOTES.length > 0 && (
+          <div className="proof__quotes">
+            {QUOTES.map((story) => (
+              <figure className="stories__card" key={story.quote}>
+                <blockquote>
+                  <p>“{story.quote}”</p>
+                </blockquote>
+                <figcaption>
+                  <strong>{story.attribution}</strong>
+                  {story.suburb && <span>{story.suburb}</span>}
+                  {story.sourceLabel && <span>{story.sourceLabel}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

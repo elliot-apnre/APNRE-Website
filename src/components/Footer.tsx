@@ -1,41 +1,54 @@
-import starMark from '../assets/logo/apn-star-mark.png';
+import Logo from './Logo';
+import { OFFICE_LIST } from '../data/offices';
+import {
+  ABN,
+  BUSINESS_NAME,
+  LEGAL_ENTITY_NAME,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  RLA_NUMBER,
+} from '../data/business';
 
-export default function Footer() {
+interface FooterProps {
+  /** Where the footer CTA points. See Header's ctaHref. */
+  ctaHref?: string;
+}
+
+export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
+  // Only details that are actually filled in (src/data/business.ts).
+  const registration = [
+    LEGAL_ENTITY_NAME,
+    ABN && `ABN ${ABN}`,
+    RLA_NUMBER && `RLA ${RLA_NUMBER}`,
+  ].filter(Boolean);
+
   return (
     <footer className="site-footer">
       <div className="wrap site-footer__inner">
         <div className="site-footer__brand">
           <div className="site-footer__logo">
-            <img src={starMark} alt="" height={34} aria-hidden="true" />
-            <span>APN Real Estate</span>
+            <Logo tone="dark" />
           </div>
           <p>Property management across Adelaide and Mount Gambier.</p>
         </div>
 
-        <div className="site-footer__col">
-          <h4><a href="/adelaide/">Adelaide</a></h4>
-          <p>
-            Level 1 / 420B, Cnr Main North Road
-            <br />
-            and Barton Street, Blair Athol SA 5084
-          </p>
-        </div>
-
-        <div className="site-footer__col">
-          <h4><a href="/mount-gambier/">Mount Gambier</a></h4>
-          <p>
-            178 Commercial Street East,
-            <br />
-            Mount Gambier SA 5290
-          </p>
-        </div>
+        {OFFICE_LIST.map((office) => (
+          <div className="site-footer__col" key={office.id}>
+            <h4><a href={office.path}>{office.name}</a></h4>
+            <p>
+              {office.addressLines[0]}
+              <br />
+              {office.addressLines[1]}
+            </p>
+          </div>
+        ))}
 
         <div className="site-footer__col">
           <h4>Get in touch</h4>
           <p>
-            <a href="tel:1300123276">1300 123 276</a>
+            <a href={PHONE_TEL} className="site-footer__phone">{PHONE_DISPLAY}</a>
           </p>
-          <a href="#appraisal" className="btn btn-outline-light site-footer__btn">
+          <a href={ctaHref} className="btn btn-outline-light site-footer__btn">
             Free Rental Appraisal
           </a>
         </div>
@@ -43,9 +56,13 @@ export default function Footer() {
 
       <div className="wrap site-footer__legal">
         <p>
-          © {new Date().getFullYear()} APN Real Estate. Formerly Adelaide
-          Property Network. Founded by Patrick Nhim.
+          © {new Date().getFullYear()} {BUSINESS_NAME}
+          {registration.length > 0 && <> · {registration.join(' · ')}</>}
+          . Formerly Adelaide Property Network.
         </p>
+        <nav className="site-footer__legal-links" aria-label="Legal">
+          <a href="/privacy/">Privacy Policy</a>
+        </nav>
       </div>
     </footer>
   );

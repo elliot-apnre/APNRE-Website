@@ -20,8 +20,8 @@ export interface TeamMember {
   /** Concise, factual, role-based copy — no invented biographical detail
    *  (years of experience, personal history, etc). Replace with a real
    *  first-person bio if/when APN supplies one; see
-   *  docs/team-photos-and-bios.md. Optional — some roles (e.g.
-   *  reception) are shown with no bio by request, not by omission. */
+   *  docs/team-photos-and-bios.md. Optional, but everyone currently
+   *  shown has a real supplied bio. */
   bio?: string;
   /** Direct phone/email — only set once verified with APN. Never invent
    *  these; a landlord seeing a wrong number is worse than seeing none. */
@@ -62,12 +62,13 @@ export const TEAM: TeamMember[] = [
     bio: 'Jenny is a Property Manager at APN, working with landlords and tenants for more than two years. She owns an investment property herself, so she manages other people’s properties the way she’d want her own managed. Outside work, she’s usually at the gym, spending time with family and friends, or travelling.',
   },
   {
-    name: 'Bree',
-    role: 'Mount Gambier Receptionist',
-    initials: 'B',
+    name: 'Breeanna Arney',
+    role: 'Property Management Trainee',
+    initials: 'BA',
     photo: breePhoto,
     group: 'property-management',
     office: 'mount-gambier',
+    bio: 'Breeanna joined APN about a month ago as a Property Management Trainee. She’s learning every part of the job, with a focus on clear communication, maintenance coordination and inspections, and on being helpful to landlords and tenants alike. Outside work, she runs her own cleaning business and is a mum of three, so she’s used to staying organised and on top of the detail through busy days.',
   },
   {
     name: 'Patrick Nhim',

@@ -27,6 +27,16 @@ const REQUIRED_FIELDS = ['name', 'email', 'phone', 'address'] as const;
 // Mirrors OfficeId in src/data/offices.ts.
 const KNOWN_OFFICES = ['adelaide', 'mount-gambier'];
 
+// Answers to "Is the property currently managed?" (MANAGED_OPTIONS in
+// src/components/AppraisalForm.tsx). The answer goes at the top of the
+// Message column so switchers stand out in the sheet without needing an
+// extra column or an Apps Script change.
+const MANAGED_LABELS: Record<string, string> = {
+  agent: 'Currently managed by another agent (switching)',
+  self: 'Currently self-managed',
+  'not-rented': 'Not rented yet',
+};
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
@@ -56,6 +66,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const source = KNOWN_OFFICES.includes(office)
     ? `apnre-website / ${office} page / appraisal form`
     : 'apnre-website / appraisal form';
+
+  const managed = MANAGED_LABELS[String(formData.get('managed') ?? '').trim()];
+  if (managed) {
+    payload.message = payload.message ? `[${managed}] ${payload.message}` : `[${managed}]`;
+  }
 
   const missing = REQUIRED_FIELDS.filter((field) => !payload[field]);
   if (missing.length > 0) {

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { trackAppraisalLead } from '../lib/analytics';
 import type { OfficeId } from '../data/offices';
 
@@ -10,6 +10,17 @@ const FORM_ENDPOINT = '/api/lead';
 
 type Status = 'idle' | 'submitting' | 'sent' | 'error' | 'not-connected';
 
+// Values must match MANAGED_LABELS in functions/api/lead.ts.
+const MANAGED_OPTIONS = [
+  { value: 'agent', label: 'Yes, by another agent' },
+  { value: 'self', label: 'No, I manage it myself' },
+  { value: 'not-rented', label: 'No, it isn’t rented yet' },
+] as const;
+
+/** Dispatched by the "switching" CTAs so the form arrives with "Yes, by
+ *  another agent" already picked. */
+export const SWITCHING_EVENT = 'apn:switching';
+
 interface AppraisalFormProps {
   /** Set on an office page so the lead is tagged with that office in the
    *  sheet's Source column (see functions/api/lead.ts). */
@@ -18,6 +29,13 @@ interface AppraisalFormProps {
 
 export default function AppraisalForm({ office }: AppraisalFormProps) {
   const [status, setStatus] = useState<Status>('idle');
+  const [managed, setManaged] = useState('');
+
+  useEffect(() => {
+    const onSwitching = () => setManaged('agent');
+    window.addEventListener(SWITCHING_EVENT, onSwitching);
+    return () => window.removeEventListener(SWITCHING_EVENT, onSwitching);
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -34,7 +52,7 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
       const formData = new FormData(e.currentTarget);
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: formData });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      trackAppraisalLead(office);
+      trackAppraisalLead(office, managed);
       setStatus('sent');
     } catch (err) {
       console.error('Appraisal form submission failed:', err);
@@ -174,13 +192,37 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
                 </label>
               </div>
 
+              <fieldset className="appraisal__choice">
+                <legend>Is the property currently managed?</legend>
+                <div className="appraisal__choice-options">
+                  {MANAGED_OPTIONS.map((option) => (
+                    <label key={option.value}>
+                      <input
+                        type="radio"
+                        name="managed"
+                        value={option.value}
+                        checked={managed === option.value}
+                        onChange={() => setManaged(option.value)}
+                      />
+                      <span>{option.label}</span>
+                    </label>
+                  ))}
+                </div>
+                {managed === 'agent' && (
+                  <p className="appraisal__choice-note">
+                    We’ll explain how changing over works, including while
+                    the property is tenanted.
+                  </p>
+                )}
+              </fieldset>
+
               <div className="appraisal__row">
                 <label>
                   Anything else that helps? (optional)
                   <textarea
                     name="message"
                     rows={3}
-                    placeholder="Property type, bedrooms, current rent, current property manager — whatever's useful."
+                    placeholder="Property type, bedrooms, current rent — whatever's useful."
                   />
                 </label>
               </div>
@@ -192,7 +234,11 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
               >
                 {status === 'submitting' ? 'Sending…' : 'Get My Free Rental Appraisal'}
               </button>
-              <p className="appraisal__fineprint">* Required.</p>
+              <p className="appraisal__fineprint">
+                * Required. We use your details to prepare your appraisal and
+                contact you about it. See our{' '}
+                <a href="/privacy/">Privacy Policy</a>.
+              </p>
             </form>
           )}
         </div>

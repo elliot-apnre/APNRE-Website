@@ -1,4 +1,4 @@
-import agentPhoto from '../assets/photos/agent-placing-sold-sticker.jpg';
+import interiorPhoto from '../assets/photos/interior-corner-windows.jpg';
 
 const REASONS = [
   {
@@ -55,11 +55,11 @@ export default function WhyApn() {
 
         <div className="why__media">
           <img
-            src={agentPhoto}
-            alt="An APN agent placing a Sold sticker on a property sign"
+            src={interiorPhoto}
+            alt="Interior of a property managed by APN, with floor-to-ceiling windows"
           />
           <p className="why__caption">
-            Real work, on real properties, across Adelaide and Mount Gambier.
+            Real properties, looked after by a local team.
           </p>
         </div>
       </div>

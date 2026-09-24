@@ -33,6 +33,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         adelaide: resolve(__dirname, 'adelaide/index.html'),
         mountGambier: resolve(__dirname, 'mount-gambier/index.html'),
+        privacy: resolve(__dirname, 'privacy/index.html'),
       },
     },
   },

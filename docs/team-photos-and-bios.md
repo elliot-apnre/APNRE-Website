@@ -3,7 +3,7 @@
 ## Photos
 
 The team is split into two groups: **Property Management** (Jenny, Luke,
-Bree, Marissa — a four-up grid, `.team__grid`, circular portraits) and
+Breeanna, Marissa — a four-up grid, `.team__grid`, circular portraits) and
 **Leadership / Sales** (Patrick, Brett — wider "spotlight" cards,
 `.team__leader`, since one person alone in a grid tile reads as an
 accident rather than a deliberate layout).
@@ -25,8 +25,9 @@ since each sits in its own card, not a shared row.
 
 ## Bios
 
-`bio` is optional on `TeamMember` — Bree has none by request (receptionist,
-no bio wanted), which is a deliberate choice, not a gap to fill.
+`bio` is optional on `TeamMember`, but everyone on the page now has one.
+Breeanna Arney (Property Management Trainee, Mount Gambier) supplied hers
+in September 2026; she was previously listed as reception with no bio.
 
 Jenny, Marissa, Brett and Patrick have real supplied bios. Luke's is still
 the original short, factual, role-based stand-in (what he manages, not a
