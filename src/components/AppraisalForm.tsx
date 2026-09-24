@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { trackAppraisalLead } from '../lib/analytics';
+import type { OfficeId } from '../data/offices';
 
 // Posts to the Cloudflare Pages Function at functions/api/lead.ts, which
 // forwards the submission server-side to a Google Sheet (see
@@ -9,7 +10,13 @@ const FORM_ENDPOINT = '/api/lead';
 
 type Status = 'idle' | 'submitting' | 'sent' | 'error' | 'not-connected';
 
-export default function AppraisalForm() {
+interface AppraisalFormProps {
+  /** Set on an office page so the lead is tagged with that office in the
+   *  sheet's Source column (see functions/api/lead.ts). */
+  office?: OfficeId;
+}
+
+export default function AppraisalForm({ office }: AppraisalFormProps) {
   const [status, setStatus] = useState<Status>('idle');
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -27,7 +34,7 @@ export default function AppraisalForm() {
       const formData = new FormData(e.currentTarget);
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: formData });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      trackAppraisalLead();
+      trackAppraisalLead(office);
       setStatus('sent');
     } catch (err) {
       console.error('Appraisal form submission failed:', err);
@@ -139,6 +146,8 @@ export default function AppraisalForm() {
                   <input type="text" name="hp_confirm" tabIndex={-1} autoComplete="off" />
                 </label>
               </div>
+
+              {office && <input type="hidden" name="office" value={office} />}
 
               <div className="appraisal__row">
                 <label>

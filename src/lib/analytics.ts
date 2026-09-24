@@ -9,12 +9,14 @@ declare global {
   }
 }
 
-/** Fire once, right after a successful appraisal-form submission. */
-export function trackAppraisalLead() {
+/** Fire once, right after a successful appraisal-form submission.
+ *  `office` is set when the form was on an office page. */
+export function trackAppraisalLead(office?: string) {
   try {
     window.gtag?.('event', 'generate_lead', {
       event_category: 'appraisal_form',
       event_label: 'Free Rental Appraisal',
+      office: office ?? 'home',
     });
   } catch (err) {
     console.warn('GA4 lead event failed:', err);

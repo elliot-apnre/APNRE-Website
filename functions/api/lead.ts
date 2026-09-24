@@ -24,6 +24,9 @@ interface Env {
 
 const REQUIRED_FIELDS = ['name', 'email', 'phone', 'address'] as const;
 
+// Mirrors OfficeId in src/data/offices.ts.
+const KNOWN_OFFICES = ['adelaide', 'mount-gambier'];
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
@@ -47,6 +50,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ ok: true });
   }
 
+  // Office pages add a hidden `office` field. Only known values make it
+  // into the sheet, so a tampered form can't write arbitrary text there.
+  const office = String(formData.get('office') ?? '').trim();
+  const source = KNOWN_OFFICES.includes(office)
+    ? `apnre-website / ${office} page / appraisal form`
+    : 'apnre-website / appraisal form';
+
   const missing = REQUIRED_FIELDS.filter((field) => !payload[field]);
   if (missing.length > 0) {
     return json({ ok: false, error: `Missing required field(s): ${missing.join(', ')}` }, 400);
@@ -62,7 +72,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         ...payload,
-        source: 'apnre-website / appraisal form',
+        source,
         submittedAt: new Date().toISOString(),
       }),
     });

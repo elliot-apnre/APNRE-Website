@@ -662,10 +662,9 @@ input, select, textarea {
 
 @media (min-width: 860px) {
   .team__grid {
-    /* Matches the current property-management headcount (4) exactly —
-       a complete row, not a partial one with an empty trailing gap.
-       Update this if the roster count changes. */
-    grid-template-columns: repeat(4, 1fr);
+    /* Set inline by Team.tsx to the group's headcount (max 4), so each
+       row is complete rather than leaving an empty trailing gap. */
+    grid-template-columns: repeat(var(--team-cols, 4), 1fr);
   }
 }
 
@@ -1326,4 +1325,268 @@ input, select, textarea {
   .site-footer__legal {
     padding-bottom: 96px;
   }
+}
+
+/* ============================================================
+   Office links (header + hero) and office pages
+   ============================================================ */
+
+.site-header__nav {
+  align-items: center;
+}
+
+.site-header__nav-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--line-light);
+}
+
+.site-header__nav a[aria-current='page'] {
+  border-bottom-color: var(--lime);
+  color: var(--charcoal-900);
+}
+
+@media (max-width: 1100px) {
+  /* Four section links + two office links need more room than the
+     original four did; hide the nav a little earlier so it never
+     crowds the logo or CTA. Office links stay reachable on smaller
+     screens via the hero, the offices strip and the footer. */
+  .site-header__nav {
+    display: none;
+  }
+}
+
+.hero__meta a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(141, 198, 0, 0.6);
+  padding-bottom: 1px;
+}
+
+.hero__meta a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--lime);
+}
+
+.hero__meta--above {
+  margin-bottom: 20px;
+  color: var(--lime);
+}
+
+.hero--office {
+  min-height: min(calc(100svh - 68px), 760px);
+}
+
+/* About the office ("bio") */
+
+.office-about__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.office-about__copy .eyebrow {
+  margin-bottom: 18px;
+}
+
+.office-about__copy h2 {
+  margin-bottom: 20px;
+}
+
+.office-about__copy .body-copy + .body-copy {
+  margin-top: 14px;
+}
+
+.office-about__card {
+  background: var(--white);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-md);
+  padding: clamp(24px, 3vw, 32px);
+}
+
+.office-about__card-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-bottom: 14px;
+}
+
+.office-about__address {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.office-about__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.office-about__links a {
+  color: var(--lime-ink);
+  text-decoration: none;
+}
+
+.office-about__links a:hover {
+  color: var(--charcoal-900);
+}
+
+@media (max-width: 760px) {
+  .office-about__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Success stories */
+
+.stories__head,
+.work__head,
+.offices__head {
+  max-width: 620px;
+  margin-bottom: 36px;
+}
+
+.stories__head .eyebrow,
+.work__head .eyebrow,
+.offices__head .eyebrow {
+  margin-bottom: 18px;
+}
+
+.stories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.stories__card {
+  margin: 0;
+  background: var(--white);
+  border-left: 3px solid var(--lime);
+  border-radius: var(--radius-sm);
+  padding: clamp(22px, 3vw, 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stories__card blockquote {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.stories__card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.88rem;
+  color: var(--grey-mid);
+}
+
+.stories__card figcaption strong {
+  color: var(--charcoal-900);
+  font-family: var(--font-display);
+}
+
+.stories__card figcaption a {
+  color: var(--lime-ink);
+}
+
+/* Examples of work */
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.work__card {
+  margin: 0;
+}
+
+.work__card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.work__tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--lime-ink);
+  margin-bottom: 6px;
+}
+
+.work__card h3 {
+  margin-bottom: 6px;
+}
+
+/* Offices strip (homepage + "other office" on office pages) */
+
+.offices__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.offices__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: clamp(24px, 3vw, 32px);
+  background: var(--white);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius-md);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.offices__card:hover {
+  border-color: var(--lime);
+  transform: translateY(-2px);
+}
+
+.offices__address {
+  color: var(--charcoal-600);
+  font-size: 0.95rem;
+}
+
+.offices__people {
+  color: var(--grey-mid);
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+}
+
+.offices__link {
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--lime-ink);
+}
+
+.hero--plain {
+  /* Office hero with no local photo yet: brand charcoal with a faint
+     lime glow, and shorter since there's no image to show off. */
+  min-height: min(calc(100svh - 68px), 620px);
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(141, 198, 0, 0.16), transparent 55%),
+    var(--charcoal-900);
 }

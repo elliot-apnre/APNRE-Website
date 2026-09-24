@@ -32,11 +32,11 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="hero__meta">
-          <span>Adelaide</span>
+        <nav className="hero__meta" aria-label="Our offices">
+          <a href="/adelaide/">Adelaide</a>
           <span aria-hidden="true">/</span>
-          <span>Mount Gambier</span>
-        </div>
+          <a href="/mount-gambier/">Mount Gambier</a>
+        </nav>
       </div>
     </section>
   );

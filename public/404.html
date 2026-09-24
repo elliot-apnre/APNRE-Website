@@ -9,7 +9,8 @@
       that doesn't match a built file. Its presence at the output root is
       also what turns OFF Pages' default SPA fallback (every unknown path
       returning index.html with a 200), which Google was reporting as soft
-      404s. The site is a single page, so "/" is the only valid route.
+      404s. The only valid routes are the built pages: "/", "/adelaide/"
+      and "/mount-gambier/" (see rollupOptions.input in vite.config.ts).
 
       This file is copied verbatim from public/ — Vite doesn't process it —
       so keep it self-contained and only reference files in public/.

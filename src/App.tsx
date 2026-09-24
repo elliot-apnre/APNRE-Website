@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import LandlordProblem from './components/LandlordProblem';
 import WhyApn from './components/WhyApn';
 import Team from './components/Team';
+import OfficesStrip from './components/OfficesStrip';
 import Proof from './components/Proof';
 import SwitchSection from './components/SwitchSection';
 import AppraisalForm from './components/AppraisalForm';
@@ -20,6 +21,7 @@ export default function App() {
         <LandlordProblem />
         <WhyApn />
         <Team />
+        <OfficesStrip />
         <Proof />
         <SwitchSection />
         <AppraisalForm />

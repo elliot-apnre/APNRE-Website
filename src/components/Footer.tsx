@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
 
         <div className="site-footer__col">
-          <h4>Adelaide</h4>
+          <h4><a href="/adelaide/">Adelaide</a></h4>
           <p>
             Level 1 / 420B, Cnr Main North Road
             <br />
@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
 
         <div className="site-footer__col">
-          <h4>Mount Gambier</h4>
+          <h4><a href="/mount-gambier/">Mount Gambier</a></h4>
           <p>
             178 Commercial Street East,
             <br />

@@ -6,7 +6,14 @@ Real Estate. This is a paid-campaign landing page, not a general company
 website — every section is built to move a landlord toward the rental
 appraisal form.
 
-## Page structure
+## Pages
+
+- `/`: the campaign landing page (structure below)
+- `/adelaide/` and `/mount-gambier/`: office pages, each with an office
+  intro, that office's team, success stories and examples of work. See
+  `docs/office-pages.md` for how to add stories and work examples.
+
+## Homepage structure
 
 1. Hero — dual conversion paths: get an appraisal, or "thinking of
    changing property managers"
@@ -76,7 +83,10 @@ all point at `https://apnre.com.au/`.
 ```
 src/
   components/     one file per section, in page order
-  data/team.ts    PROPERTY_MANAGERS (prominent) + LEADERSHIP (small line)
+  data/team.ts    the team, with each person's group and office
+  data/offices.ts office intros, addresses, stories, work examples
+  partials/       <head> markup shared by every page (fonts, analytics)
+  main.tsx        homepage entry; office-main.tsx is the office pages'
   assets/
     logo/         APN logo files (transparent PNG versions included)
     photos/       supplied property/agent/sold-sign photography
