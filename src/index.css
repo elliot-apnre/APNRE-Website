@@ -2084,3 +2084,14 @@ input, select, textarea {
   font-size: 1rem;
   color: var(--charcoal-600);
 }
+
+.site-header__logo {
+  height: 64px;
+  width: auto;
+}
+
+@media (max-width: 560px) {
+  .site-header__logo {
+    height: 54px;
+  }
+}

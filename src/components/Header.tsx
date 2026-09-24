@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import Logo from './Logo';
-import { OFFICE_LIST, type OfficeId } from '../data/offices';
+import { MAIN_LOGO, MAIN_LOGO_ALT, OFFICE_LIST, type OfficeId } from '../data/offices';
 import { PHONE_DISPLAY, PHONE_TEL } from '../data/business';
 import { trackCallClick } from '../lib/analytics';
 
@@ -60,7 +59,13 @@ export default function Header({ nav = HOME_NAV, currentOffice, ctaHref = '#appr
     <header className={`site-header${scrolled || menuOpen ? ' is-scrolled' : ''}`}>
       <div className="wrap site-header__row">
         <a href={isHome ? '#top' : '/'} className="site-header__brand" aria-label="APN Real Estate — home">
-          <Logo subline={office ? `${office.name} office` : undefined} />
+          {/* Stacked logos (mark over wordmark) need the height to stay
+              legible. */}
+          <img
+            src={office ? office.logo : MAIN_LOGO}
+            alt={office ? office.logoAlt : MAIN_LOGO_ALT}
+            className="site-header__logo"
+          />
         </a>
         <nav className="site-header__nav" aria-label="Primary">
           {nav.map((link) => (

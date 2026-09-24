@@ -91,9 +91,8 @@ src/
   partials/       <head> markup shared by every page (fonts, analytics)
   main.tsx        homepage entry; office-main.tsx is the office pages'
   assets/
-    logo/         APN logo files. Only the star mark is used on the site
-                  (components/Logo.tsx); the others still say
-                  "Adelaide/Mount Gambier Property Network"
+    logo/         APN logo files: main (Adelaide Property Network),
+                  Mount Gambier version, and the star mark
     photos/       supplied property/agent/sold-sign photography
     team/         supplied team portraits, cropped to 3:4
   index.css       design tokens + all section styles
@@ -112,8 +111,12 @@ public/
   background, so text there is charcoal, and the lime goes on fills,
   rules and underlines. Don't reintroduce darker "accessible" greens:
   they read as a different, muddier brand colour.
-- One logo everywhere: the star mark plus "APN Real Estate" set in
-  Archivo (`src/components/Logo.tsx`), matching the Open Graph image.
+- Logos: the Adelaide Property Network logo is the main brand logo, in
+  the header on the homepage and the Adelaide page (and on the 404).
+  The Mount Gambier page uses the Mount Gambier version. Both are set in
+  `src/data/offices.ts`. The footer uses the star mark plus "APN Real
+  Estate" (`src/components/Logo.tsx`), since the full logo's grey
+  lettering doesn't read on the charcoal footer.
 - Typefaces: Archivo (headings) + Public Sans (body), loaded via Google
   Fonts in `index.html`.
 - No AI-generated people or stock "shaking hands" photography anywhere —
