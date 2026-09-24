@@ -60,13 +60,14 @@ workExamples: [
 The section and its "Our Work" nav link stay hidden while the list is
 empty.
 
-## Mount Gambier hero photo
+## Hero photos
 
-Every photo supplied so far is from Adelaide, and the signage in some of
-them still says "Adelaide Property Network". So the Mount Gambier page
-uses a plain dark hero for now. To add a real local photo, put it in
-`src/assets/photos/`, import it in `src/data/offices.ts`, and set
-`heroPhoto` / `heroAlt` on the Mount Gambier entry.
+Each office's hero is set by `heroPhoto` / `heroAlt` in
+`src/data/offices.ts`. Mount Gambier's is a street shot from APN's own
+listing photography (4 Boandik Terrace). It's a sales listing, so the
+alt text describes the street rather than claiming APN manages it. Use
+exterior or empty-room shots only: interiors of occupied homes show the
+owners' or tenants' belongings.
 
 ## Leads
 

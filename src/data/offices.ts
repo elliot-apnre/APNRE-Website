@@ -1,4 +1,5 @@
 import balconyView from '../assets/photos/balcony-view-hills.jpg';
+import mountGambierStreet from '../assets/photos/mount-gambier-hillside-street.jpg';
 import adelaideLogo from '../assets/logo/adelaide-property-network-logo.png';
 import mountGambierLogo from '../assets/logo/mount-gambier-property-network-logo.png';
 
@@ -99,10 +100,11 @@ export const OFFICES: Record<OfficeId, Office> = {
     logoAlt: 'Mount Gambier Property Network — APN Real Estate',
     addressLines: ['178 Commercial Street East,', 'Mount Gambier SA 5290'],
     phone: '1300 123 276',
-    // Every photo supplied so far is from Adelaide (and the signage in
-    // them reads "Adelaide Property Network"), so this hero is plain
-    // until a real Mount Gambier photo is supplied — add it to
-    // src/assets/photos/ and set heroPhoto/heroAlt here.
+    // A Mount Gambier street from APN's own listing photography (a sales
+    // listing, so the alt text doesn't claim APN manages it).
+    heroPhoto: mountGambierStreet,
+    heroAlt: 'Homes on a hillside street in Mount Gambier',
+    heroFocalPoint: '30% 65%',
     lede: 'Property management for Mount Gambier landlords from a local team on Commercial Street East — with a named property manager you can reach directly.',
     about: [
       'Our Mount Gambier office is at 178 Commercial Street East, with a local team looking after Mount Gambier landlords and their properties.',
