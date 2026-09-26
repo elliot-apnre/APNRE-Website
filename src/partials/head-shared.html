@@ -7,11 +7,12 @@
 -->
 <!--
   Google Tag Manager. VITE_GTM_ID comes from the same env source as the
-  GA4/Meta IDs below (see .env). Leaving it blank is safe: the "if" below
-  is false at build time and the snippet never runs. Don't remove the
-  gtag.js GA4 code further down until GA4 is reconfigured inside GTM.
-  Matching <noscript> iframe: src/partials/body-shared.html, injected
-  immediately after <body> on every page.
+  Meta Pixel ID below (see .env). Leaving it blank is safe: the "if"
+  below is false at build time and the snippet never runs. GA4 itself is
+  configured as a Google tag inside this GTM container (GTM-P5H7NTCF),
+  not built here — see the Meta-Pixel-only script further down. Matching
+  <noscript> iframe: src/partials/body-shared.html, injected immediately
+  after <body> on every page.
 -->
 <script>
   if ('%VITE_GTM_ID%') {
@@ -38,29 +39,15 @@
   rel="stylesheet"
 />
 <!--
-  Analytics — GA4 + Meta Pixel.
+  Meta Pixel. ID comes from a Cloudflare Pages build environment
+  variable so no account ID lives in source: Pages project → Settings →
+  Environment variables → add VITE_META_PIXEL_ID, then redeploy.
 
-  IDs come from Cloudflare Pages build environment variables so no
-  account IDs live in source: Pages project → Settings → Environment
-  variables → add VITE_GA4_ID and/or VITE_META_PIXEL_ID, then redeploy.
-
-  Leaving either var unset is safe: the corresponding "if" below is
-  false at build time and that script never runs. No placeholder IDs
-  to remember to swap out before launch.
+  Leaving it unset is safe: the "if" below is false at build time and
+  this script never runs. No placeholder ID to remember to swap out
+  before launch.
 -->
 <script>
-  if ('%VITE_GA4_ID%') {
-    var gaScript = document.createElement('script');
-    gaScript.async = true;
-    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=%VITE_GA4_ID%';
-    document.head.appendChild(gaScript);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() { window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', '%VITE_GA4_ID%');
-  }
-
   if ('%VITE_META_PIXEL_ID%') {
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {

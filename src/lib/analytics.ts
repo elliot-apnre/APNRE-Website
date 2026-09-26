@@ -34,16 +34,39 @@ export function trackAppraisalLead(office?: string, managed?: string) {
   }
 }
 
-/** Fire once, right after a successful appraisal-form submission, before
- *  the redirect to /thank-you/ — lets a GTM trigger fire a conversion off
- *  this event without depending on gtag's own `generate_lead` event. */
-export function trackAppraisalFormSubmit(formName: string) {
+/** Fire right after a successful appraisal-form submission, then call
+ *  `onDone` — normally the redirect to /thank-you/. Waits (briefly) for
+ *  GTM's tags to actually finish sending before navigating away: pushing
+ *  the event and immediately navigating in the same tick can abort the
+ *  in-flight request, so GTM never gets to record the conversion. Uses
+ *  `eventCallback` (GTM calls it once every tag triggered by this event
+ *  has fired) with a matching `eventTimeout`, plus a `setTimeout`
+ *  fallback of its own in case GTM never calls back at all (blocked,
+ *  slow to load, or the container has no matching trigger) — either way
+ *  `onDone` runs exactly once, at most ~1.5s after the push. */
+export function trackAppraisalFormSubmit(formName: string, onDone: () => void) {
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    onDone();
+  };
+
   try {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'appraisal_form_submit', form_name: formName });
+    window.dataLayer.push({
+      event: 'appraisal_form_submit',
+      form_name: formName,
+      eventCallback: finish,
+      eventTimeout: 1500,
+    });
   } catch (err) {
     console.warn('dataLayer push failed:', err);
+    finish();
+    return;
   }
+
+  setTimeout(finish, 1500);
 }
 
 /** A tap on a "Call" button. `placement` says which one. */

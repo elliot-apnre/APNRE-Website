@@ -56,10 +56,13 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
       if (!body || body.ok !== true) throw new Error(`Submission not confirmed: ${JSON.stringify(body)}`);
 
       trackAppraisalLead(office, managed);
-      trackAppraisalFormSubmit('landlord_appraisal');
-      window.location.href = '/thank-you/';
-      // No setStatus('sent') here — the redirect above navigates away, and
-      // setting state on a component that's about to unmount is pointless.
+      // The redirect happens inside this callback, once GTM's tags for
+      // this event have fired (or ~1.5s elapses, whichever's first) — see
+      // trackAppraisalFormSubmit. No setStatus('sent') needed either way:
+      // the component is about to unmount.
+      trackAppraisalFormSubmit('landlord_appraisal', () => {
+        window.location.href = '/thank-you/';
+      });
     } catch (err) {
       console.error('Appraisal form submission failed:', err);
       setStatus('error');
