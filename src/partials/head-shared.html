@@ -1,8 +1,33 @@
 <!--
   Injected into every page's head at its "shared-head" marker comment by
   the sharedHead plugin in vite.config.ts, so favicons, fonts and
-  analytics only live in one place.
+  analytics only live in one place. The marker sits right after
+  <meta viewport> in each page, so this — including GTM — loads as high
+  in <head> as possible while still letting <meta charset> stay first.
 -->
+<!--
+  Google Tag Manager. VITE_GTM_ID comes from the same env source as the
+  GA4/Meta IDs below (see .env). Leaving it blank is safe: the "if" below
+  is false at build time and the snippet never runs. Don't remove the
+  gtag.js GA4 code further down until GA4 is reconfigured inside GTM.
+  Matching <noscript> iframe: src/partials/body-shared.html, injected
+  immediately after <body> on every page.
+-->
+<script>
+  if ('%VITE_GTM_ID%') {
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', '%VITE_GTM_ID%');
+  }
+</script>
+
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

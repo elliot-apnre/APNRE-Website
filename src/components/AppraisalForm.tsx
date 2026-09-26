@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { trackAppraisalLead } from '../lib/analytics';
+import { trackAppraisalLead, trackAppraisalFormSubmit } from '../lib/analytics';
 import type { OfficeId } from '../data/offices';
 
 // Posts to the Cloudflare Pages Function at functions/api/lead.ts, which
@@ -8,7 +8,7 @@ import type { OfficeId } from '../data/offices';
 // configuration needed. Swap this if the intake mechanism ever changes.
 const FORM_ENDPOINT = '/api/lead';
 
-type Status = 'idle' | 'submitting' | 'sent' | 'error' | 'not-connected';
+type Status = 'idle' | 'submitting' | 'error' | 'not-connected';
 
 // Values must match MANAGED_LABELS in functions/api/lead.ts.
 const MANAGED_OPTIONS = [
@@ -52,8 +52,14 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
       const formData = new FormData(e.currentTarget);
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: formData });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      const body = await res.json().catch(() => null);
+      if (!body || body.ok !== true) throw new Error(`Submission not confirmed: ${JSON.stringify(body)}`);
+
       trackAppraisalLead(office, managed);
-      setStatus('sent');
+      trackAppraisalFormSubmit('landlord_appraisal');
+      window.location.href = '/thank-you/';
+      // No setStatus('sent') here — the redirect above navigates away, and
+      // setting state on a component that's about to unmount is pointless.
     } catch (err) {
       console.error('Appraisal form submission failed:', err);
       setStatus('error');
@@ -109,16 +115,6 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
               received until an integration is added — see the
               <code> FORM_ENDPOINT</code> constant in
               <code> AppraisalForm.tsx</code>.
-            </div>
-          )}
-
-          {status === 'sent' && (
-            <div className="appraisal__result appraisal__result--success" role="status">
-              <h3 className="h-3">Thanks — we’ve got your details.</h3>
-              <p className="body-copy">
-                A member of the APN property management team will be in
-                touch shortly. If it’s urgent, call the office directly.
-              </p>
             </div>
           )}
 

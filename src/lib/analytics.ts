@@ -6,6 +6,7 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     fbq?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
@@ -30,6 +31,18 @@ export function trackAppraisalLead(office?: string, managed?: string) {
     });
   } catch (err) {
     console.warn('Meta Pixel lead event failed:', err);
+  }
+}
+
+/** Fire once, right after a successful appraisal-form submission, before
+ *  the redirect to /thank-you/ — lets a GTM trigger fire a conversion off
+ *  this event without depending on gtag's own `generate_lead` event. */
+export function trackAppraisalFormSubmit(formName: string) {
+  try {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'appraisal_form_submit', form_name: formName });
+  } catch (err) {
+    console.warn('dataLayer push failed:', err);
   }
 }
 

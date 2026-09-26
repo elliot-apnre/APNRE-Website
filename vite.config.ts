@@ -20,8 +20,26 @@ function sharedHead(): Plugin {
   };
 }
 
+// Replaces the <!-- shared-body --> marker (immediately after <body> in
+// each page) with src/partials/body-shared.html — the GTM <noscript>
+// fallback. Kept separate from sharedHead() since it targets a different
+// marker; same %VITE_*% replacement behaviour via the 'pre' order.
+function sharedBody(): Plugin {
+  const partialPath = resolve(__dirname, 'src/partials/body-shared.html');
+  return {
+    name: 'apn-shared-body',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html) {
+        const partial = readFileSync(partialPath, 'utf8');
+        return html.replace('<!-- shared-body -->', partial);
+      },
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), sharedHead()],
+  plugins: [react(), sharedHead(), sharedBody()],
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -34,6 +52,7 @@ export default defineConfig({
         adelaide: resolve(__dirname, 'adelaide/index.html'),
         mountGambier: resolve(__dirname, 'mount-gambier/index.html'),
         privacy: resolve(__dirname, 'privacy/index.html'),
+        thankYou: resolve(__dirname, 'thank-you/index.html'),
       },
     },
   },
