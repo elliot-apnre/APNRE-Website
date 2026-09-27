@@ -16,3 +16,18 @@
     style="display: none; visibility: hidden"
   ></iframe>
 </noscript>
+<!--
+  Meta Pixel <noscript> fallback (PageView only, for visitors with JS
+  off). Lives here rather than next to the pixel script in
+  head-shared.html because an <img> isn't valid inside <head>. Same
+  caveat as the GTM iframe above if VITE_META_PIXEL_ID is ever blanked.
+-->
+<noscript>
+  <img
+    height="1"
+    width="1"
+    style="display: none"
+    alt=""
+    src="https://www.facebook.com/tr?id=%VITE_META_PIXEL_ID%&ev=PageView&noscript=1"
+  />
+</noscript>
