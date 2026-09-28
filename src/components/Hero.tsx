@@ -4,7 +4,7 @@ import Picture from './Picture';
 export default function Hero() {
   return (
     <section id="top" className="hero">
-      <div className="hero__media" role="img" aria-label="View across the Adelaide hills from a managed investment property">
+      <div className="hero__media">
         <Picture photo={balconyView} alt="View across the Adelaide hills from one of the properties APN manages" priority />
         <div className="hero__scrim" />
       </div>
