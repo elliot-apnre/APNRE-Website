@@ -64,7 +64,8 @@ export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
           {registration.length > 0 && <> · {registration.join(' · ')}</>}
           . Formerly Adelaide Property Network.
         </p>
-        <nav className="site-footer__legal-links" aria-label="Legal">
+        <nav className="site-footer__legal-links" aria-label="More">
+          {__BLOG_HAS_POSTS__ && <a href="/blog/">Blog</a>}
           <a href="/privacy/">Privacy Policy</a>
         </nav>
       </div>

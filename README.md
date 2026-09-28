@@ -14,6 +14,9 @@ appraisal form.
   `docs/office-pages.md` for how to add stories and work examples.
 - `/privacy/`: privacy policy, linked from the footer and the form.
   Update it whenever the form, analytics or ad tracking changes.
+- `/blog/` and `/blog/<post>/`: landlord articles for SEO, written as
+  Markdown in `content/blog/` and built into static HTML. See
+  `docs/blog.md` for how to add a post.
 
 ## Homepage structure
 
