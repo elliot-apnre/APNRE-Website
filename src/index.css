@@ -935,7 +935,7 @@ input, select, textarea {
   margin-top: 0;
 }
 
-.appraisal__steps-list h4 {
+.appraisal__steps-list h3 {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;
@@ -1269,8 +1269,14 @@ input, select, textarea {
   max-width: 26ch;
 }
 
-.site-footer__col h4 {
+/* Column titles. A <p>, not a heading, so the footer doesn't add to the
+   page outline; the first four lines repeat what the h1–h4 rule gave
+   them when they were <h4>s, so they look the same. */
+.site-footer__col .site-footer__heading {
   font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--paper);
   font-size: 0.95rem;
   margin-bottom: 12px;
@@ -2078,7 +2084,7 @@ p.hero__headline {
   margin-bottom: 16px;
 }
 
-.site-footer__col h4 {
+.site-footer__col .site-footer__heading {
   display: flex;
   align-items: center;
   min-height: 44px;

@@ -45,7 +45,7 @@ export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
 
         {OFFICE_LIST.map((office) => (
           <div className="site-footer__col" key={office.id}>
-            <h4><a href={office.path}>{office.name}</a></h4>
+            <p className="site-footer__heading"><a href={office.path}>{office.name}</a></p>
             <p>
               {office.addressLines[0]}
               <br />
@@ -55,7 +55,7 @@ export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
         ))}
 
         <div className="site-footer__col">
-          <h4>Get in touch</h4>
+          <p className="site-footer__heading">Get in touch</p>
           <p>
             <a href={PHONE_TEL} className="site-footer__phone">{PHONE_DISPLAY}</a>
           </p>

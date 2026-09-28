@@ -88,21 +88,21 @@ export default function AppraisalForm({ office }: AppraisalFormProps) {
               <li>
                 <span className="appraisal__step-num">01</span>
                 <div>
-                  <h4>We review your property</h4>
+                  <h3>We review your property</h3>
                   <p>We review the information you’ve provided and assess the property.</p>
                 </div>
               </li>
               <li>
                 <span className="appraisal__step-num">02</span>
                 <div>
-                  <h4>We contact you</h4>
+                  <h3>We contact you</h3>
                   <p>An APN property manager gets in touch directly.</p>
                 </div>
               </li>
               <li>
                 <span className="appraisal__step-num">03</span>
                 <div>
-                  <h4>You decide</h4>
+                  <h3>You decide</h3>
                   <p>There’s no obligation to appoint APN.</p>
                 </div>
               </li>
