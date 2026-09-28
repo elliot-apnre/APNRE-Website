@@ -86,4 +86,5 @@ the Apps Script is needed. The GA4 `generate_lead` event also carries an
 3. Copy `adelaide/index.html` to `<id>/index.html`, then update its meta
    tags, structured data and `data-office`.
 4. Add it to `rollupOptions.input` in `vite.config.ts` and to
-   `public/sitemap.xml`.
+   `STATIC_PAGES` in `src/pages-server.tsx` (which also puts it in the
+   sitemap).

@@ -79,8 +79,8 @@ the article. Leave it out to credit "APN Real Estate".
 `npm run build` runs in three steps: the normal Vite build, a server
 build of `src/server.tsx`, then `scripts/prerender.mjs`. That
 script writes `dist/blog/…/index.html` for every published post and adds
-them to `dist/sitemap.xml`. Don't add blog URLs to
-`public/sitemap.xml` by hand.
+them to `dist/sitemap.xml`, which is generated at build time: there's
+no sitemap file to edit by hand.
 
 Until the first post is published, `/blog/` is marked `noindex`, left
 out of the sitemap and not linked from anywhere. Once there's a post,

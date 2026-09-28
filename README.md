@@ -103,7 +103,8 @@ public/
   favicon-32.png, favicon-180.png, apple-touch-icon.png, og-cover.jpg
   404.html        served with a real 404 for every unknown path; its
                   presence also disables Cloudflare Pages' SPA fallback
-  robots.txt, sitemap.xml
+  robots.txt      sitemap.xml is generated at build time, by
+                  scripts/prerender.mjs
 ```
 
 ## Design notes
