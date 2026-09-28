@@ -33,33 +33,8 @@
     />
     <meta name="twitter:image" content="https://apnre.com.au/og-cover.jpg" />
 
-    <!--
-      Structured data for this office only, limited to the same verified
-      details as the homepage's (see index.html): address and phone.
-    -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "RealEstateAgent",
-        "name": "APN Real Estate — Mount Gambier",
-        "url": "https://apnre.com.au/mount-gambier/",
-        "telephone": "+61-1300-123-276",
-        "areaServed": "Mount Gambier SA",
-        "parentOrganization": {
-          "@type": "RealEstateAgent",
-          "name": "APN Real Estate",
-          "url": "https://apnre.com.au/"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "178 Commercial Street East",
-          "addressLocality": "Mount Gambier",
-          "addressRegion": "SA",
-          "postalCode": "5290",
-          "addressCountry": "AU"
-        }
-      }
-    </script>
+    <!-- Structured data, filled in at build time: src/structured-data.ts -->
+    <!-- page-jsonld -->
     <script type="module" src="/src/office-main.tsx"></script>
   </head>
   <body>

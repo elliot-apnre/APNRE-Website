@@ -33,49 +33,8 @@
     />
     <meta name="twitter:image" content="https://apnre.com.au/og-cover.jpg" />
 
-    <!--
-      LocalBusiness structured data, limited to details already verified
-      elsewhere on this page (see Footer.tsx): the two office addresses and
-      the phone number. No ratings, review counts, or other unverified
-      claims are included here — see the Proof/Faq sections' comments for
-      why those are deliberately left out.
-    -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "RealEstateAgent",
-        "name": "APN Real Estate",
-        "alternateName": "Adelaide Property Network",
-        "telephone": "+61-1300-123-276",
-        "areaServed": ["Adelaide SA", "Mount Gambier SA"],
-        "location": [
-          {
-            "@type": "Place",
-            "name": "APN Real Estate — Adelaide",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Level 1 / 420B, Cnr Main North Road and Barton Street",
-              "addressLocality": "Blair Athol",
-              "addressRegion": "SA",
-              "postalCode": "5084",
-              "addressCountry": "AU"
-            }
-          },
-          {
-            "@type": "Place",
-            "name": "APN Real Estate — Mount Gambier",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "178 Commercial Street East",
-              "addressLocality": "Mount Gambier",
-              "addressRegion": "SA",
-              "postalCode": "5290",
-              "addressCountry": "AU"
-            }
-          }
-        ]
-      }
-    </script>
+    <!-- Structured data, filled in at build time: src/structured-data.ts -->
+    <!-- page-jsonld -->
     <script type="module" src="/src/main.tsx"></script>
   </head>
   <body>

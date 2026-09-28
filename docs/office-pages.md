@@ -13,6 +13,7 @@ offices" strip under the team, and the footer.
 | Office intro, address, hero photo, stories, work examples | `src/data/offices.ts` |
 | Who appears on which office page | `office:` on each person in `src/data/team.ts` |
 | Page title / description / search snippet | `adelaide/index.html`, `mount-gambier/index.html` |
+| Structured data (address, phone, parent business) | `src/structured-data.ts`, from `postalAddress` in `src/data/offices.ts` |
 | Page layout (section order) | `src/OfficePage.tsx` |
 
 ## Adding a success story

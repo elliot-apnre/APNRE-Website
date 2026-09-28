@@ -48,6 +48,13 @@ export interface Office {
   logo: string;
   logoAlt: string;
   addressLines: [string, string];
+  /** The same address split up for structured data (see
+   *  src/structured-data.ts). Keep it in step with addressLines. */
+  postalAddress: {
+    streetAddress: string;
+    addressLocality: string;
+    postalCode: string;
+  };
   phone: string;
   /** Must be a real photo from this area. Leave unset to show a plain
    *  dark hero rather than borrowing another office's photography. */
@@ -79,6 +86,11 @@ export const OFFICES: Record<OfficeId, Office> = {
     logo: MAIN_LOGO,
     logoAlt: MAIN_LOGO_ALT,
     addressLines: ['Level 1 / 420B, Cnr Main North Road', 'and Barton Street, Blair Athol SA 5084'],
+    postalAddress: {
+      streetAddress: 'Level 1 / 420B, Cnr Main North Road and Barton Street',
+      addressLocality: 'Blair Athol',
+      postalCode: '5084',
+    },
     phone: '1300 123 276',
     heroPhoto: balconyView,
     heroAlt: 'View across the Adelaide hills from one of the properties APN manages',
@@ -99,6 +111,11 @@ export const OFFICES: Record<OfficeId, Office> = {
     logo: mountGambierLogo,
     logoAlt: 'Mount Gambier Property Network — APN Real Estate',
     addressLines: ['178 Commercial Street East,', 'Mount Gambier SA 5290'],
+    postalAddress: {
+      streetAddress: '178 Commercial Street East',
+      addressLocality: 'Mount Gambier',
+      postalCode: '5290',
+    },
     phone: '1300 123 276',
     // A Mount Gambier street from APN's own listing photography (a sales
     // listing, so the alt text doesn't claim APN manages it).

@@ -11,8 +11,8 @@ import BlogPostPage from './BlogPostPage';
 import { loadPosts } from './blog/load-posts';
 import { BLOG_DATA_ID, type BlogPageData, type Post, type PostMeta } from './blog/types';
 import { TEAM } from './data/team';
+import { ORGANIZATION_REF, SITE, scriptJson } from './structured-data';
 
-const SITE = 'https://apnre.com.au';
 const DEFAULT_IMAGE = `${SITE}/og-cover.jpg`;
 const RELATED_COUNT = 3;
 
@@ -31,11 +31,6 @@ function esc(value: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
-}
-
-/** JSON inside a <script> tag: escape "<" so a post can't close the tag. */
-function scriptJson(value: unknown): string {
-  return JSON.stringify(value).replace(/</g, '\\u003c');
 }
 
 function absolute(path: string): string {
@@ -85,12 +80,9 @@ function head(o: HeadOptions): string {
     .join('\n    ');
 }
 
-const PUBLISHER = {
-  '@type': 'Organization',
-  name: 'APN Real Estate',
-  url: `${SITE}/`,
-  logo: { '@type': 'ImageObject', url: `${SITE}/apple-touch-icon.png` },
-};
+// The organisation described on the homepage (src/structured-data.ts),
+// linked by its @id.
+const PUBLISHER = ORGANIZATION_REF;
 
 function breadcrumbs(items: [name: string, path: string][]) {
   return {
