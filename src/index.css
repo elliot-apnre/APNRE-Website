@@ -1372,6 +1372,21 @@ input, select, textarea {
   color: var(--lime);
 }
 
+/* The homepage hero's eyebrow is its <h1> (see Hero.tsx), so undo the
+   heading line-height to match the office pages' <p> version. */
+h1.hero__meta {
+  line-height: inherit;
+}
+
+/* The homepage tagline is a <p>, not a heading, so give it the heading
+   type settings it had as an <h1>. */
+p.hero__headline {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
 .hero--office {
   min-height: min(calc(100svh - 68px), 760px);
 }
