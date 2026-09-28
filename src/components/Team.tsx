@@ -18,7 +18,7 @@ function TeamCard({ member }: { member: TeamMember }) {
       <div className="team__portrait">
         <Picture
           photo={member.photo}
-          alt={member.name}
+          alt={member.photoAlt}
           style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
         />
       </div>
@@ -36,7 +36,7 @@ function TeamLeader({ member }: { member: TeamMember }) {
       <div className="team__leader-portrait">
         <Picture
           photo={member.photo}
-          alt={member.name}
+          alt={member.photoAlt}
           style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
         />
       </div>
