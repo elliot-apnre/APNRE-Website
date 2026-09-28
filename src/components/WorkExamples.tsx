@@ -17,7 +17,7 @@ export default function WorkExamples({ office }: { office: Office }) {
         <div className="work__grid">
           {office.workExamples.map((example) => (
             <figure className="work__card" key={example.title}>
-              <Picture photo={example.photo} alt={example.alt} />
+              <Picture photo={example.photo} alt={example.alt} sizes="400px" />
               <figcaption>
                 {example.tag && <span className="work__tag">{example.tag}</span>}
                 <h3 className="h-3">{example.title}</h3>

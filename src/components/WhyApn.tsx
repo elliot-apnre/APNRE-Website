@@ -57,6 +57,7 @@ export default function WhyApn() {
         <div className="why__media">
           <Picture
             photo={interiorPhoto}
+            sizes="(max-width: 900px) 100vw, 480px"
             alt="Interior of a property managed by APN, with floor-to-ceiling windows"
           />
           <p className="why__caption">

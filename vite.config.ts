@@ -76,17 +76,31 @@ function blogDevServer(): Plugin {
   };
 }
 
+// Photos wider than this also get a copy PHONE_PHOTO_WIDTH wide, which
+// is what phones load (see src/components/Picture.tsx). Narrower ones,
+// like the team portraits, are small enough to use as they are.
+const PHONE_PHOTO_WIDTH = 800;
+const RESIZE_ABOVE_WIDTH = 1000;
+
 // What a `?photo` import produces (see src/lib/photo.ts): WebP, plus a
-// JPEG for browsers without it, both at quality 80 and the original size.
-// No sharpening or other filters, so photos stay as shot. (No AVIF: at
-// the same quality it came out larger than WebP for these photos.) Other
+// JPEG for browsers without it, both at quality 80. Each comes at the
+// original size, plus a PHONE_PHOTO_WIDTH copy for large photos. No
+// sharpening or other filters, so photos stay as shot. (No AVIF: at the
+// same quality it came out larger than WebP for these photos.) Other
 // image imports are left alone.
+//
+// The format must be spelled "jpeg", not "jpg": imagetools names a
+// freshly made file after the directive but a cached one after what
+// sharp reads back ("jpeg"), so with "jpg" a cold-cache client build and
+// a warm-cache SSR build disagree on the file names.
 function imageDefaults() {
   return imagetools({
-    defaultDirectives: (url) =>
-      url.searchParams.has('photo')
-        ? new URLSearchParams({ format: 'webp;jpg', quality: '80', as: 'picture' })
-        : new URLSearchParams(),
+    defaultDirectives: async (url, metadata) => {
+      if (!url.searchParams.has('photo')) return new URLSearchParams();
+      const { width = 0 } = await metadata();
+      const widths = width > RESIZE_ABOVE_WIDTH ? [PHONE_PHOTO_WIDTH, width] : [width];
+      return new URLSearchParams({ format: 'webp;jpeg', quality: '80', w: widths.join(';'), as: 'picture' });
+    },
   });
 }
 
