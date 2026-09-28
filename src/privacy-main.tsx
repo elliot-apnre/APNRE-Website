@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import PrivacyPage from './PrivacyPage';
+import { mount } from './mount';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+mount(
+  document.getElementById('root')!,
   <React.StrictMode>
     <PrivacyPage />
   </React.StrictMode>

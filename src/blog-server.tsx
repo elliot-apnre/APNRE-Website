@@ -1,7 +1,7 @@
 // Build-time renderer for the blog. Turns the Markdown posts in
 // content/blog/ into complete HTML pages, so each article's text is in
 // the page itself rather than filled in by JavaScript — which is what
-// makes the blog useful for SEO. Used by scripts/prerender-blog.mjs
+// makes the blog useful for SEO. Used by scripts/prerender.mjs
 // after `vite build`, and by the dev server (blogDevServer() in
 // vite.config.ts). The browser side is src/blog-main.tsx.
 

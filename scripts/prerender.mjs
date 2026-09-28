@@ -1,7 +1,8 @@
-// Last step of `npm run build`. Uses the server build of
-// src/blog-server.tsx (in dist-ssr/) to write every blog page into dist/
-// as finished HTML, adds the published ones to dist/sitemap.xml, then
-// removes dist-ssr/. See docs/blog.md.
+// Last step of `npm run build`. Uses the server build of src/server.tsx
+// (in dist-ssr/) to write finished HTML into dist/: the homepage, office
+// pages and privacy policy (src/pages-server.tsx) and every blog page
+// (src/blog-server.tsx). Adds the published blog pages to
+// dist/sitemap.xml, then removes dist-ssr/. See docs/blog.md.
 
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -11,7 +12,17 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const ssrDir = join(root, 'dist-ssr');
 
-const { renderBlogPages } = await import(pathToFileURL(join(ssrDir, 'blog-server.js')).href);
+const { renderBlogPages, STATIC_PAGES, renderStaticPage } = await import(
+  pathToFileURL(join(ssrDir, 'server.js')).href
+);
+
+// Each page's own dist/<path>/index.html (already processed by Vite, so
+// its script and stylesheet links are in) gets its content filled in
+// place.
+for (const page of STATIC_PAGES) {
+  const file = join(dist, page.path, 'index.html');
+  writeFileSync(file, renderStaticPage(page, readFileSync(file, 'utf8')));
+}
 
 const template = readFileSync(join(dist, 'blog', 'index.html'), 'utf8');
 const pages = renderBlogPages(template);
@@ -39,4 +50,5 @@ writeFileSync(sitemapFile, sitemap.replace('</urlset>', () => `${entries}</urlse
 rmSync(ssrDir, { recursive: true, force: true });
 
 const published = pages.filter((p) => p.indexable && p.path !== '/blog/').length;
+console.log(`Pre-rendered ${STATIC_PAGES.length} page(s).`);
 console.log(`Blog: wrote ${pages.length} page(s), ${published} published post(s) added to the sitemap.`);

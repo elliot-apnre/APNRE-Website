@@ -98,7 +98,7 @@ export default defineConfig({
         privacy: resolve(__dirname, 'privacy/index.html'),
         thankYou: resolve(__dirname, 'thank-you/index.html'),
         // Template for every blog page; filled in after the build by
-        // scripts/prerender-blog.mjs. See docs/blog.md.
+        // scripts/prerender.mjs. See docs/blog.md.
         blog: resolve(__dirname, 'blog/index.html'),
       },
     },

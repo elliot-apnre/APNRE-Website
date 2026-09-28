@@ -68,11 +68,11 @@ the article. Leave it out to credit "APN Real Estate".
 | Post page layout | `src/BlogPostPage.tsx`, `src/components/PostCard.tsx` |
 | Titles, meta tags, structured data | `src/blog-server.tsx` |
 | Reading and checking posts | `src/blog/load-posts.ts` |
-| Writing the pages at build time | `scripts/prerender-blog.mjs` |
+| Writing the pages at build time | `scripts/prerender.mjs` |
 | Styles | "Blog" section at the end of `src/index.css` |
 
 `npm run build` runs in three steps: the normal Vite build, a server
-build of `src/blog-server.tsx`, then `scripts/prerender-blog.mjs`. That
+build of `src/server.tsx`, then `scripts/prerender.mjs`. That
 script writes `dist/blog/…/index.html` for every published post and adds
 them to `dist/sitemap.xml`. Don't add blog URLs to
 `public/sitemap.xml` by hand.
