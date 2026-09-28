@@ -13,7 +13,8 @@ search engines read it straight away.
    The file name becomes the address:
    `rental-bond-guide.md` → `apnre.com.au/blog/rental-bond-guide/`.
    Lowercase words and hyphens only. Don't rename a published post
-   without setting up a redirect, because its address would break.
+   without adding a redirect to `public/_redirects`, because its
+   address would break.
 2. Fill in the settings at the top (between the `---` lines) and write
    the post in Markdown below them. The template explains each setting
    and shows the formatting.
@@ -48,7 +49,11 @@ the article. Leave it out to credit "APN Real Estate".
   Google ("how much bond can I charge in SA", "switching property
   managers mid-lease").
 - Put that phrase in the title and the first paragraph, and answer it
-  early.
+  early. If the title is too long for Google (over about 60
+  characters), set a shorter `seoTitle:` for search and shares.
+- Don't aim a post at the same phrase as an office page ("property
+  management Adelaide"): the two compete in Google. Aim posts at
+  questions, and link to the office page instead.
 - Link to the homepage form (`/#appraisal`), the office pages and other
   posts where it's natural.
 - Rules and figures (bond limits, notice periods, rent increase rules)

@@ -6,11 +6,15 @@
 
 # Shown as the page heading and in Google results. Aim for under 60
 # characters, with the phrase a landlord would search for near the start.
-title: "Property Management in Adelaide: What Landlords Should Expect"
+title: "What Does a Property Manager Do? A Guide for Adelaide Landlords"
+
+# Optional. A shorter title for Google results and social shares, when
+# the page heading is too long for them. " | APN Real Estate" is added.
+seoTitle: "What Does a Property Manager Do?"
 
 # The summary under the title, in Google results and on social shares.
 # One or two sentences, roughly 120–155 characters.
-description: "What should Adelaide landlords expect from a professional property manager? Discover the key responsibilities, benefits and considerations when choosing property management."
+description: "What a property manager actually does for Adelaide landlords — tenants, maintenance, rent and communication — and what to look for when choosing one."
 
 # Publish date, YYYY-MM-DD. Posts are listed newest first.
 date: 2026-09-28
@@ -172,6 +176,6 @@ At **APN Real Estate**, our approach is simple:
 
 **Your property is an asset. We treat it like one.**
 
-If you're considering changing property managers, renting out an investment property for the first time, or simply want to understand how your property is currently performing, speak with the APN Real Estate team.
+If you're considering changing property managers, renting out an investment property for the first time, or simply want to understand how your property is currently performing, speak with the APN Real Estate team at our [Adelaide](/adelaide/) or [Mount Gambier](/mount-gambier/) office.
 
-**Thinking about your property differently? Get in touch with APN Real Estate to discuss your property management needs.**
+**Thinking about your property differently? [Get in touch](/#appraisal) with APN Real Estate to discuss your property management needs.**

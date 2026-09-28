@@ -76,6 +76,7 @@ export function loadPosts({ includeDrafts = false } = {}): Post[] {
     return {
       slug,
       title: requireString(data, 'title', file),
+      seoTitle: optionalString(data, 'seoTitle'),
       description: requireString(data, 'description', file),
       date: toIsoDate(data.date, 'date', file),
       updated: data.updated ? toIsoDate(data.updated, 'updated', file) : undefined,

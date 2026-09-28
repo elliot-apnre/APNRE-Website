@@ -4,6 +4,9 @@
 export interface PostMeta {
   slug: string;
   title: string;
+  /** Shorter title for the <title> tag and social shares, when `title`
+   *  (the page heading) is too long for them. */
+  seoTitle?: string;
   description: string;
   /** ISO date, YYYY-MM-DD. */
   date: string;

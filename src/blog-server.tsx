@@ -166,7 +166,7 @@ export function renderBlogPages(template: string, { includeDrafts = false } = {}
       html: fill(
         template,
         head({
-          title: `${post.title} | APN Real Estate`,
+          title: `${post.seoTitle ?? post.title} | APN Real Estate`,
           description: post.description,
           path,
           indexable,

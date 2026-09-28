@@ -8,6 +8,10 @@
 # characters, with the phrase a landlord would search for near the start.
 title: "How much bond can a landlord charge in South Australia?"
 
+# Optional. A shorter title for Google results and social shares, when
+# the page heading is too long for them. " | APN Real Estate" is added.
+# seoTitle: "Bond limits in South Australia"
+
 # The summary under the title, in Google results and on social shares.
 # One or two sentences, roughly 120–155 characters.
 description: "What the bond limits are in SA, who holds the money and how it's returned at the end of a lease."
