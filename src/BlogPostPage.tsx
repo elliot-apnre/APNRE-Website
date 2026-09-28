@@ -3,6 +3,7 @@ import AppraisalForm from './components/AppraisalForm';
 import Footer from './components/Footer';
 import StickyMobileCta from './components/StickyMobileCta';
 import PostCard from './components/PostCard';
+import Picture from './components/Picture';
 import { TEAM } from './data/team';
 import { POST_BODY_ID, formatDate, type PostMeta } from './blog/types';
 
@@ -62,10 +63,9 @@ export default function BlogPostPage({ post, bodyHtml, related }: BlogPostPagePr
 
             {author && (
               <aside className="post__author" aria-label="About the author">
-                <img
-                  src={author.photo}
+                <Picture
+                  photo={author.photo}
                   alt=""
-                  loading="lazy"
                   style={author.focalPoint ? { objectPosition: author.focalPoint } : undefined}
                 />
                 <div>

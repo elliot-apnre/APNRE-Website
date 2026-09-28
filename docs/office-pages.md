@@ -45,7 +45,7 @@ nav link) stays hidden while the list is empty.
    office's `workExamples`:
 
 ```ts
-import fendenRoad from '../assets/photos/sold-sign-fenden-rd.jpg';
+import fendenRoad from '../assets/photos/sold-sign-fenden-rd.jpg?photo';
 // …
 workExamples: [
   {

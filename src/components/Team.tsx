@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { TEAM, type TeamMember } from '../data/team';
+import Picture from './Picture';
 
 function ContactLines({ member }: { member: TeamMember }) {
   if (!member.phone && !member.email) return null;
@@ -15,8 +16,8 @@ function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div className="team__card">
       <div className="team__portrait">
-        <img
-          src={member.photo}
+        <Picture
+          photo={member.photo}
           alt={member.name}
           style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
         />
@@ -33,8 +34,8 @@ function TeamLeader({ member }: { member: TeamMember }) {
   return (
     <div className="team__leader">
       <div className="team__leader-portrait">
-        <img
-          src={member.photo}
+        <Picture
+          photo={member.photo}
           alt={member.name}
           style={member.focalPoint ? { objectPosition: member.focalPoint } : undefined}
         />

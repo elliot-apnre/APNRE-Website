@@ -56,6 +56,17 @@ body {
 img {
   max-width: 100%;
   display: block;
+  /* Images carry width/height attributes (so space is reserved before
+     they load); this keeps them in proportion when max-width shrinks
+     them. Rules that set a height still win. */
+  height: auto;
+}
+
+/* <picture> (components/Picture.tsx) is only a wrapper for choosing a
+   format. Keep it out of layout so the <img> inside sits exactly where a
+   bare <img> did, and existing ".x img" rules still apply. */
+picture {
+  display: contents;
 }
 
 a {

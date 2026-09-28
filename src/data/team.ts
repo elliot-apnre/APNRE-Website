@@ -1,10 +1,11 @@
-import patrickPhoto from '../assets/team/patrick-nhim.jpg';
-import brettPhoto from '../assets/team/brett-david.jpg';
-import jennyPhoto from '../assets/team/jenny-saffin.jpg';
-import lukePhoto from '../assets/team/luke-whittaker.jpg';
-import marissaPhoto from '../assets/team/marissa-bowell.jpg';
-import breePhoto from '../assets/team/bree.jpg';
+import patrickPhoto from '../assets/team/patrick-nhim.jpg?photo';
+import brettPhoto from '../assets/team/brett-david.jpg?photo';
+import jennyPhoto from '../assets/team/jenny-saffin.jpg?photo';
+import lukePhoto from '../assets/team/luke-whittaker.jpg?photo';
+import marissaPhoto from '../assets/team/marissa-bowell.jpg?photo';
+import breePhoto from '../assets/team/bree.jpg?photo';
 import type { OfficeId } from './offices';
+import type { Photo } from '../lib/photo';
 
 export type TeamGroup = 'property-management' | 'leadership';
 
@@ -12,7 +13,7 @@ export interface TeamMember {
   name: string;
   role: string;
   initials: string;
-  photo: string;
+  photo: Photo;
   group: TeamGroup;
   /** Which office page this person appears on. Everyone still appears
    *  in the homepage team section. */

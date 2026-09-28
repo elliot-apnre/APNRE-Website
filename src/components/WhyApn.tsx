@@ -1,4 +1,5 @@
-import interiorPhoto from '../assets/photos/interior-corner-windows.jpg';
+import interiorPhoto from '../assets/photos/interior-corner-windows.jpg?photo';
+import Picture from './Picture';
 
 const REASONS = [
   {
@@ -54,8 +55,8 @@ export default function WhyApn() {
         </div>
 
         <div className="why__media">
-          <img
-            src={interiorPhoto}
+          <Picture
+            photo={interiorPhoto}
             alt="Interior of a property managed by APN, with floor-to-ceiling windows"
           />
           <p className="why__caption">

@@ -1,4 +1,5 @@
 import type { Office } from '../data/offices';
+import Picture from './Picture';
 
 // Like SuccessStories, hidden until real entries exist in
 // src/data/offices.ts. Photos must be of the actual property listed.
@@ -16,7 +17,7 @@ export default function WorkExamples({ office }: { office: Office }) {
         <div className="work__grid">
           {office.workExamples.map((example) => (
             <figure className="work__card" key={example.title}>
-              <img src={example.photo} alt={example.alt} loading="lazy" />
+              <Picture photo={example.photo} alt={example.alt} />
               <figcaption>
                 {example.tag && <span className="work__tag">{example.tag}</span>}
                 <h3 className="h-3">{example.title}</h3>

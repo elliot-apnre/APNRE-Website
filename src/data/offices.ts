@@ -1,10 +1,19 @@
-import balconyView from '../assets/photos/balcony-view-hills.jpg';
-import mountGambierStreet from '../assets/photos/mount-gambier-hillside-street.jpg';
+import balconyView from '../assets/photos/balcony-view-hills.jpg?photo';
+import mountGambierStreet from '../assets/photos/mount-gambier-hillside-street.jpg?photo';
 import adelaideLogo from '../assets/logo/adelaide-property-network-logo.png';
 import mountGambierLogo from '../assets/logo/mount-gambier-property-network-logo.png';
+import type { Photo } from '../lib/photo';
+
+/** A logo file and its size in pixels. Update the size if the file is
+ *  replaced, so the browser reserves the right space for it. */
+export interface Logo {
+  src: string;
+  width: number;
+  height: number;
+}
 
 /** The main brand logo, used on the homepage and the Adelaide page. */
-export const MAIN_LOGO = adelaideLogo;
+export const MAIN_LOGO: Logo = { src: adelaideLogo, width: 362, height: 240 };
 export const MAIN_LOGO_ALT = 'Adelaide Property Network — APN Real Estate';
 
 export type OfficeId = 'adelaide' | 'mount-gambier';
@@ -24,10 +33,11 @@ export interface SuccessStory {
 }
 
 /** A real property APN has worked on. The photo must be of that actual
- *  property (import it from src/assets/photos/). Keep captions factual:
+ *  property (import it from src/assets/photos/ with ?photo on the end).
+ *  Keep captions factual:
  *  what happened, not how impressive it was. */
 export interface WorkExample {
-  photo: string;
+  photo: Photo;
   alt: string;
   /** Short label, e.g. street + suburb: 'Fenden Road, Salisbury'. */
   title: string;
@@ -45,7 +55,7 @@ export interface Office {
   path: string;
   /** Logo shown in the header on this office's page. Adelaide uses the
    *  main logo; Mount Gambier has its own version of it. */
-  logo: string;
+  logo: Logo;
   logoAlt: string;
   addressLines: [string, string];
   /** The same address split up for structured data (see
@@ -58,7 +68,7 @@ export interface Office {
   phone: string;
   /** Must be a real photo from this area. Leave unset to show a plain
    *  dark hero rather than borrowing another office's photography. */
-  heroPhoto?: string;
+  heroPhoto?: Photo;
   heroAlt?: string;
   /** CSS object-position for the hero image. */
   heroFocalPoint?: string;
@@ -108,7 +118,7 @@ export const OFFICES: Record<OfficeId, Office> = {
     id: 'mount-gambier',
     name: 'Mount Gambier',
     path: '/mount-gambier/',
-    logo: mountGambierLogo,
+    logo: { src: mountGambierLogo, width: 369, height: 240 },
     logoAlt: 'Mount Gambier Property Network — APN Real Estate',
     addressLines: ['178 Commercial Street East,', 'Mount Gambier SA 5290'],
     postalAddress: {

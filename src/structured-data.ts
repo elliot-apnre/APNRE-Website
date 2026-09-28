@@ -72,7 +72,7 @@ export function officeAgent(office: Office) {
     name: `${BUSINESS_NAME} — ${office.name}`,
     url: `${SITE}${office.path}`,
     telephone: PHONE_SCHEMA,
-    ...(office.heroPhoto ? { image: absolute(office.heroPhoto) } : {}),
+    ...(office.heroPhoto ? { image: absolute(office.heroPhoto.img.src) } : {}),
     areaServed: `${office.name} SA`,
     address: {
       '@type': 'PostalAddress',

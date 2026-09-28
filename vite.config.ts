@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { imagetools } from 'vite-imagetools';
 import { loadPosts } from './src/blog/load-posts';
 
 // Replaces the <!-- shared-head --> marker in each page with
@@ -75,8 +76,22 @@ function blogDevServer(): Plugin {
   };
 }
 
+// What a `?photo` import produces (see src/lib/photo.ts): WebP, plus a
+// JPEG for browsers without it, both at quality 80 and the original size.
+// No sharpening or other filters, so photos stay as shot. (No AVIF: at
+// the same quality it came out larger than WebP for these photos.) Other
+// image imports are left alone.
+function imageDefaults() {
+  return imagetools({
+    defaultDirectives: (url) =>
+      url.searchParams.has('photo')
+        ? new URLSearchParams({ format: 'webp;jpg', quality: '80', as: 'picture' })
+        : new URLSearchParams(),
+  });
+}
+
 export default defineConfig({
-  plugins: [react(), sharedHead(), sharedBody(), blogDevServer()],
+  plugins: [react(), imageDefaults(), sharedHead(), sharedBody(), blogDevServer()],
   define: {
     // Whether any post is published, so the footer's Blog link only
     // appears once there's something to read. Worked out when the build

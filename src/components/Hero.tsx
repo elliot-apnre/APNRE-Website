@@ -1,10 +1,11 @@
-import balconyView from '../assets/photos/balcony-view-hills.jpg';
+import balconyView from '../assets/photos/balcony-view-hills.jpg?photo';
+import Picture from './Picture';
 
 export default function Hero() {
   return (
     <section id="top" className="hero">
       <div className="hero__media" role="img" aria-label="View across the Adelaide hills from a managed investment property">
-        <img src={balconyView} alt="View across the Adelaide hills from one of the properties APN manages" />
+        <Picture photo={balconyView} alt="View across the Adelaide hills from one of the properties APN manages" priority />
         <div className="hero__scrim" />
       </div>
 

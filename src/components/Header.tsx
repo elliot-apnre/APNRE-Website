@@ -30,6 +30,7 @@ export default function Header({ nav = HOME_NAV, currentOffice, ctaHref = '#appr
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const office = OFFICE_LIST.find((o) => o.id === currentOffice);
+  const logo = office ? office.logo : MAIN_LOGO;
   const isHome = nav === HOME_NAV;
 
   useEffect(() => {
@@ -62,7 +63,9 @@ export default function Header({ nav = HOME_NAV, currentOffice, ctaHref = '#appr
           {/* Stacked logos (mark over wordmark) need the height to stay
               legible. */}
           <img
-            src={office ? office.logo : MAIN_LOGO}
+            src={logo.src}
+            width={logo.width}
+            height={logo.height}
             alt={office ? office.logoAlt : MAIN_LOGO_ALT}
             className="site-header__logo"
           />

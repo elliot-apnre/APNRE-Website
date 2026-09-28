@@ -1,4 +1,5 @@
-import balconyWide from '../assets/photos/balcony-view-wide.jpg';
+import balconyWide from '../assets/photos/balcony-view-wide.jpg?photo';
+import Picture from './Picture';
 import { SWITCHING_EVENT } from './AppraisalForm';
 import { PHONE_DISPLAY, PHONE_TEL } from '../data/business';
 import { trackCallClick } from '../lib/analytics';
@@ -7,7 +8,7 @@ export default function SwitchSection() {
   return (
     <section id="switch" className="switch">
       <div className="switch__media">
-        <img src={balconyWide} alt="Balcony view from a property managed by APN" />
+        <Picture photo={balconyWide} alt="Balcony view from a property managed by APN" />
         <div className="switch__scrim" />
       </div>
 

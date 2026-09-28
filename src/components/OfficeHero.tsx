@@ -1,14 +1,16 @@
 import type { Office } from '../data/offices';
+import Picture from './Picture';
 
 export default function OfficeHero({ office }: { office: Office }) {
   return (
     <section id="top" className={`hero hero--office${office.heroPhoto ? '' : ' hero--plain'}`}>
       {office.heroPhoto && (
         <div className="hero__media">
-          <img
-            src={office.heroPhoto}
+          <Picture
+            photo={office.heroPhoto}
             alt={office.heroAlt ?? ''}
             style={office.heroFocalPoint ? { objectPosition: office.heroFocalPoint } : undefined}
+            priority
           />
           <div className="hero__scrim" />
         </div>

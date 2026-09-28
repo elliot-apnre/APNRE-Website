@@ -31,7 +31,14 @@ export default function Footer({ ctaHref = '#appraisal' }: FooterProps) {
           <a href="/" className="site-footer__logo">
             {/* The main logo with its grey parts lightened so they read on
                 charcoal; the green is unchanged. */}
-            <img src={logoReversed} alt="Adelaide Property Network — APN Real Estate" />
+            <img
+              src={logoReversed}
+              width={448}
+              height={300}
+              alt="Adelaide Property Network — APN Real Estate"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
           <p>Property management across Adelaide and Mount Gambier.</p>
         </div>
