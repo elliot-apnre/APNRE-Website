@@ -1,13 +1,21 @@
-// Thin wrapper around the GA4 / Meta Pixel globals loaded in index.html.
-// Safe to call even when analytics isn't configured (VITE_GA4_ID /
-// VITE_META_PIXEL_ID unset) — both branches just no-op.
+// Thin wrapper around the GTM dataLayer and the Meta Pixel global, both
+// loaded by src/partials/head-shared.html. GA4 is a tag inside the GTM
+// container rather than a gtag.js install, so GA4 events are pushed to
+// dataLayer and GTM forwards them — docs/gtm-events.md lists the trigger
+// and tag each event needs. Safe to call even when analytics isn't
+// configured (VITE_GTM_ID / VITE_META_PIXEL_ID blank): the push lands in
+// an array nothing reads, and the fbq branch no-ops.
 
 declare global {
   interface Window {
-    gtag?: (...args: unknown[]) => void;
     fbq?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
   }
+}
+
+function pushEvent(event: string, params: Record<string, unknown>) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event, ...params });
 }
 
 /** Fire once, right after a successful appraisal-form submission.
@@ -15,14 +23,14 @@ declare global {
  *  answer to "is it currently managed?" (empty if skipped). */
 export function trackAppraisalLead(office?: string, managed?: string) {
   try {
-    window.gtag?.('event', 'generate_lead', {
+    pushEvent('generate_lead', {
       event_category: 'appraisal_form',
       event_label: 'Free Rental Appraisal',
       office: office ?? 'home',
       currently_managed: managed || 'not_answered',
     });
   } catch (err) {
-    console.warn('GA4 lead event failed:', err);
+    console.warn('dataLayer lead event failed:', err);
   }
 
   try {
@@ -72,9 +80,9 @@ export function trackAppraisalFormSubmit(formName: string, onDone: () => void) {
 /** A tap on a "Call" button. `placement` says which one. */
 export function trackCallClick(placement: string) {
   try {
-    window.gtag?.('event', 'click_to_call', { placement });
+    pushEvent('click_to_call', { placement });
   } catch (err) {
-    console.warn('GA4 call event failed:', err);
+    console.warn('dataLayer call event failed:', err);
   }
 
   try {
