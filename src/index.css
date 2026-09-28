@@ -935,7 +935,10 @@ input, select, textarea {
   margin-top: 0;
 }
 
-.appraisal__steps-list h3 {
+/* An <h3> under the form's <h2>, but an <h2> on /thank-you/, where the
+   page's only other heading is its <h1>. Class-based so it outranks
+   .legal__inner h2 there. */
+.appraisal__steps-list .appraisal__step-title {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;

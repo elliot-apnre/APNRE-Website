@@ -28,21 +28,21 @@ export default function ThankYouPage() {
               <li>
                 <span className="appraisal__step-num">01</span>
                 <div>
-                  <h4>We review your property</h4>
+                  <h2 className="appraisal__step-title">We review your property</h2>
                   <p>We look over the details you’ve given us and assess the property.</p>
                 </div>
               </li>
               <li>
                 <span className="appraisal__step-num">02</span>
                 <div>
-                  <h4>We contact you</h4>
+                  <h2 className="appraisal__step-title">We contact you</h2>
                   <p>An APN property manager gets in touch directly.</p>
                 </div>
               </li>
               <li>
                 <span className="appraisal__step-num">03</span>
                 <div>
-                  <h4>You decide</h4>
+                  <h2 className="appraisal__step-title">You decide</h2>
                   <p>There’s no obligation to appoint APN.</p>
                 </div>
               </li>
