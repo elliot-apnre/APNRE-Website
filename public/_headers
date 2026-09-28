@@ -1,0 +1,14 @@
+# Cloudflare Pages response headers: a path pattern, then indented
+# headers. https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Without these, browsers re-check every file with the server on each
+# visit. Both folders below can be cached for a year because a changed
+# file always gets a new name: Vite puts a content hash in every name in
+# /assets/, and the font files must be renamed if they're ever replaced
+# (see src/partials/head-shared.html).
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

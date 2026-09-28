@@ -43,7 +43,8 @@
   families are variable fonts: one file per script holds every weight.
   The two Latin files are preloaded, since every page uses them. To
   change the weights, fetch that URL again with a Chrome user agent and
-  replace these rules and files.
+  replace these rules and files. Give new files new names: public/_headers
+  lets browsers cache /fonts/ for a year.
 -->
 <link rel="preload" href="/fonts/publicsans-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
