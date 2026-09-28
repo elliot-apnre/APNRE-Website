@@ -34,17 +34,37 @@ for (const page of pages) {
   writeFileSync(file, page.html);
 }
 
+const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+
 // A static page's <lastmod> is the date of the last commit touching its
-// sources. Without git history (or before the files are committed),
-// falls back to today.
-const today = new Date().toISOString().slice(0, 10);
-function lastCommitDate(paths) {
+// sources, so the build needs the full git history. Cloudflare Pages
+// clones only the latest commit, and in a shallow clone that one commit
+// looks like it added every file, so every page would get its date. So
+// fetch the rest of the history first. If that fails, or there's no git
+// at all, leave those pages' <lastmod> out (with a warning) rather than
+// give a wrong date. Blog pages use the dates in their front matter.
+function hasFullHistory() {
+  let reason = 'git fetch --unshallow left the clone shallow';
   try {
-    const date = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...paths], { cwd: root, encoding: 'utf8' }).trim();
-    return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : today;
-  } catch {
-    return today;
+    if (git('rev-parse', '--is-shallow-repository') !== 'true') return true;
+    console.log('Sitemap: shallow clone, fetching full git history for <lastmod>...');
+    git('fetch', '--unshallow', '--quiet');
+    if (git('rev-parse', '--is-shallow-repository') !== 'true') return true;
+  } catch (err) {
+    reason = String(err.message).split('\n')[0];
   }
+  console.warn(`Sitemap: no full git history (${reason}), leaving <lastmod> out for static pages.`);
+  return false;
+}
+
+// Files that aren't committed yet have no log, which means they're being
+// changed today.
+const today = new Date().toISOString().slice(0, 10);
+const fullHistory = hasFullHistory();
+function lastCommitDate(paths) {
+  if (!fullHistory) return undefined;
+  const date = git('log', '-1', '--format=%cs', '--', ...paths);
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : today;
 }
 
 const urls = [
@@ -56,7 +76,12 @@ writeFileSync(
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     urls
-      .map((u) => `  <url>\n    <loc>https://apnre.com.au${u.path}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n  </url>\n`)
+      .map(
+        (u) =>
+          `  <url>\n    <loc>https://apnre.com.au${u.path}</loc>\n` +
+          (u.lastmod ? `    <lastmod>${u.lastmod}</lastmod>\n` : '') +
+          '  </url>\n'
+      )
       .join('') +
     '</urlset>\n'
 );
