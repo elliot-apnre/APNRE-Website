@@ -91,7 +91,8 @@ src/
   data/team.ts    the team, with each person's group and office
   data/offices.ts office intros, addresses, stories, work examples
   data/business.ts phone number, ABN / RLA / legal name for the footer
-  partials/       <head> markup shared by every page (fonts, analytics)
+  partials/       <head> markup shared by every page (fonts, analytics;
+                  for the analytics events see docs/gtm-events.md)
   main.tsx        homepage entry; office-main.tsx is the office pages'
   assets/
     logo/         APN logo files: main (Adelaide Property Network),
@@ -101,6 +102,8 @@ src/
   index.css       design tokens + all section styles
 public/
   favicon-32.png, favicon-180.png, apple-touch-icon.png, og-cover.jpg
+  fonts/          the site's woff2 font files, with their OFL licences
+  _headers        caching rules for /assets/ and /fonts/
   404.html        served with a real 404 for every unknown path; its
                   presence also disables Cloudflare Pages' SPA fallback
   llms.txt        plain-text summary for AI assistants; update it if an
@@ -123,8 +126,9 @@ public/
   `src/data/offices.ts`. The footer uses a copy of the main logo with
   its greys lightened (`adelaide-property-network-logo-reversed.png`),
   since the grey lettering doesn't read on charcoal.
-- Typefaces: Archivo (headings) + Public Sans (body), loaded via Google
-  Fonts in `index.html`.
+- Typefaces: Archivo (headings) + Public Sans (body), self-hosted from
+  `public/fonts/`. The @font-face rules are in
+  `src/partials/head-shared.html`.
 - No AI-generated people or stock "shaking hands" photography anywhere —
   every photo is either your supplied material or a plain graphic device.
 - The hero uses `display: flex` to bottom-align its content; its content

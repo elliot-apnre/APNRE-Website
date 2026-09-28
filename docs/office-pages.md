@@ -76,7 +76,8 @@ The form on an office page sends a hidden `office` field. The lead then
 shows up in the Google Sheet's Source column as e.g.
 `apnre-website / mount-gambier page / appraisal form`, so no change to
 the Apps Script is needed. The GA4 `generate_lead` event also carries an
-`office` parameter (`adelaide`, `mount-gambier`, or `home`).
+`office` parameter (`adelaide`, `mount-gambier`, or `home`). See
+`docs/gtm-events.md` for how it reaches GA4.
 
 ## Adding a third office later
 
