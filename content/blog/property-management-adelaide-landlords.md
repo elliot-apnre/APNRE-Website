@@ -175,28 +175,3 @@ At **APN Real Estate**, our approach is simple:
 If you're considering changing property managers, renting out an investment property for the first time, or simply want to understand how your property is currently performing, speak with the APN Real Estate team.
 
 **Thinking about your property differently? Get in touch with APN Real Estate to discuss your property management needs.**
-
-## Use "##" for each section heading
-
-Normal paragraphs are just text. Leave a blank line between them.
-
-**Bold** for emphasis, and [links like this](https://www.sa.gov.au/).
-Link to other pages on this site too, for example our
-[free rental appraisal](/#appraisal) or the
-[Mount Gambier office](/mount-gambier/).
-
-### "###" for a smaller heading inside a section
-
-- Bulleted lists
-- start with a hyphen
-
-1. Numbered lists
-2. start with a number
-
-> A quote or key point, pulled out.
-
-![Describe the photo for people who can't see it](/blog-images/example.jpg "Optional caption shown under the photo")
-
-| Tables | work |
-| ------ | ---- |
-| like   | this |
